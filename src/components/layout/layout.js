@@ -16,8 +16,8 @@ const Layout = props => {
     <>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        {/*<Header />
-        <Sidebar />*/}
+        <Sidebar />
+        <Header />
         <div>
           <main>{props.children}</main>
         </div>

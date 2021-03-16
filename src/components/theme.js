@@ -1,5 +1,5 @@
-import { createMuiTheme } from "@material-ui/core/styles"
-import { blue, purple, black } from "@material-ui/core/colors"
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
+import { grey, purple, black } from "@material-ui/core/colors"
 
 const theme = createMuiTheme({
   palette: {
@@ -9,9 +9,9 @@ const theme = createMuiTheme({
       dark: purple[900],
     },
     secondary: {
-      light: blue[100],
-      main: blue[500],
-      dark: blue[900],
+      light: grey[100],
+      main: grey[500],
+      dark: grey[900],
     },
     type: "light",
   },
@@ -25,15 +25,15 @@ const theme = createMuiTheme({
     h3: { fontWeight: 500, fontSize: "1.2rem" },
     h4: { fontWeight: 500, fontSize: "1rem" },
   },
-  overrides: {
-    MuiButton: {
-      contained: {
-        primary: {
-          backgroundColor: black,
-        },
-      },
-    },
-  },
+  // overrides: {
+  //   MuiButton: {
+  //     contained: {
+  //       primary: {
+  //         backgroundColor: black,
+  //       },
+  //     },
+  //   },
+  // },
 })
 
-export default theme
+export default responsiveFontSizes(theme)

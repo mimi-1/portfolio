@@ -43,6 +43,8 @@ module.exports = {
     // },
     `gatsby-plugin-offline`,
     `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -50,8 +52,6 @@ module.exports = {
         path: `${__dirname}/src`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
 
     {
       resolve: `gatsby-plugin-manifest`,
