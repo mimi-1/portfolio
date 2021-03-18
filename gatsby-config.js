@@ -3,6 +3,25 @@ module.exports = {
     title: `Portfolior`,
     description: `Portfolio site`,
     author: `Maryna Khatnyuk`,
+    menuLinks: [
+      {
+        name: `Home`,
+        link: `/`,
+      },
+      {
+        name: `Blog`,
+        link: `/blog`,
+      },
+      {
+        name: `About`,
+        link: `/about`,
+      },
+      { name: `Galery`, link: `/galery` },
+      {
+        name: `Contact`,
+        link: `/contact`,
+      },
+    ],
   },
 
   plugins: [

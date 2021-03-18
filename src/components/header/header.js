@@ -1,27 +1,41 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState } from "react"
+import { Button, IconButton, Link } from "gatsby-theme-material-ui"
+
 import {
-  fade,
   makeStyles,
   createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles"
+
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
-import IconButton from "@material-ui/core/IconButton"
-import Typography from "@material-ui/core/Typography"
-import InputBase from "@material-ui/core/InputBase"
-import Badge from "@material-ui/core/Badge"
-import MenuItem from "@material-ui/core/MenuItem"
-import Menu from "@material-ui/core/Menu"
-import MenuIcon from "@material-ui/icons/Menu"
 
-import AccountCircle from "@material-ui/icons/AccountCircle"
-import MailIcon from "@material-ui/icons/Mail"
-import NotificationsIcon from "@material-ui/icons/Notifications"
+// import MenuItem from "@material-ui/core/MenuItem"
+// import Menu from "@material-ui/core/Menu"
+import MenuIcon from "@material-ui/icons/Menu"
+import Drawer from "@material-ui/core/Drawer"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
 import { grey, pink } from "@material-ui/core/colors"
 
-//import "./header.scss"
+const menu = [
+  {
+    name: `Home`,
+    link: `/`,
+  },
+  {
+    name: `About`,
+    link: `/about`,
+  },
+  {
+    name: `Galery`,
+    link: `/galery`,
+  },
+  {
+    name: `Contact`,
+    link: `/contact`,
+  },
+]
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -36,35 +50,6 @@ const useStyles = makeStyles(theme => ({
       display: "block",
     },
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -77,13 +62,8 @@ const useStyles = makeStyles(theme => ({
       display: "none",
     },
   },
-  menu: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    backgroundColor: "#fff",
-    height: "100vh",
-    width: "3rem",
+  drawerPaper: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
 }))
 
@@ -105,44 +85,55 @@ const darkTheme = createMuiTheme({
 
 const Header = props => {
   const classes = useStyles()
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
-
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const toggleDrawer = open => event => {
+    //open false or true
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return
+    } else {
+      setIsMobileMenuOpen(!isMobileMenuOpen)
+    }
   }
-  const handleMobileMenuOpen = event => {
-    setMobileMoreAnchorEl(event.currentTarget)
-  }
 
-  const mobileMenuId = "primary-search-account-menu-mobile"
+  const mobileMenuId = "menu-mobile"
+
   const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+    <Drawer
       id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      anchor="top"
+      elevation={10}
+      in
+      timeout={200}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
+      onClose={toggleDrawer(false)}
+      classes={{
+        paper: classes.drawerPaper,
+      }}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-    </Menu>
+      <List
+        role="presentation"
+        onClick={toggleDrawer(false)}
+        onKeyDown={toggleDrawer(false)}
+        color="default"
+      >
+        {menu.map(item => (
+          <ListItem color="default">
+            <Button
+              color="transparent"
+              to={item.link}
+              fullWidth
+              disableElevation
+              onClick={toggleDrawer(false)}
+            >
+              {item.name}
+            </Button>
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
   )
 
   return (
@@ -152,25 +143,16 @@ const Header = props => {
           <Toolbar color="default">
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <Typography variant="body1" className="link">
-                <Link to="#">Home</Link>
-              </Typography>
-              <Typography variant="body1" className="link">
-                <Link to="#">About</Link>
-              </Typography>
-              <Typography variant="body1" className="link">
-                <Link to="#">Galery</Link>
-              </Typography>
-              <Typography variant="body1" className="link">
-                <Link to="#">Contact</Link>
-              </Typography>
+              {menu.map(item => (
+                <Button to={item.link}>{item.name}</Button>
+              ))}
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
                 aria-label="show more"
                 aria-controls={mobileMenuId}
                 aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
+                onClick={toggleDrawer(true)}
               >
                 <MenuIcon />
               </IconButton>

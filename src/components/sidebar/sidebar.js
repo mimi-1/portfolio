@@ -1,6 +1,5 @@
 import * as React from "react"
-import { AppBar, makeStyles, Toolbar } from "@material-ui/core"
-import { Paper } from "@material-ui/core"
+import { AppBar, makeStyles } from "@material-ui/core"
 import Logo from "../logo/logo"
 import Social from "../social/social"
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
