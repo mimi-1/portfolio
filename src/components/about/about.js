@@ -6,28 +6,67 @@ import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
 import { Button } from "gatsby-theme-material-ui"
 import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined"
-import { makeStyles } from "@material-ui/styles"
-import Avatar from "@material-ui/core/Avatar"
-import { StaticImage } from "gatsby-plugin-image"
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
 
 import aboutdata from "../../data/about"
+import GatsbyMuiAvatar from "../avatar/avatar"
 
-const useStyles = makeStyles(theme => ({
-  avatar: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-  },
-  [theme.breakpoints.down("sm")]: {
-    avatar: {
-      width: theme.spacing(6),
-      height: theme.spacing(6),
-    },
-  },
-}))
+// const useStyles = makeStyles(theme => ({
+//   avatar: {
+//     width: theme.spacing(10),
+//     height: theme.spacing(10),
+//   },
+//   [theme.breakpoints.down("sm")]: {
+//     avatar: {
+//       width: theme.spacing(6),
+//       height: theme.spacing(6),
+//     },
+//   },
+// }))
 
 const About = () => {
-  console.log(aboutdata)
-  const classes = useStyles()
+  const data = useStaticQuery(graphql`
+    query {
+      zhanna: file(name: { eq: "zhanna" }) {
+        relativePath
+        largeImage: childImageSharp {
+          gatsbyImageData(
+            formats: WEBP
+            width: 250
+            aspectRatio: 1
+            transformOptions: { fit: COVER, cropFocus: ENTROPY }
+          )
+        }
+        smallImage: childImageSharp {
+          gatsbyImageData(
+            width: 100
+            aspectRatio: 1.8
+            transformOptions: { fit: COVER, cropFocus: NORTH }
+          )
+        }
+      }
+      victor: file(name: { eq: "zhanna" }) {
+        relativePath
+        largeImage: childImageSharp {
+          gatsbyImageData(
+            formats: WEBP
+            width: 250
+            aspectRatio: 1
+            transformOptions: { fit: COVER, cropFocus: ENTROPY }
+          )
+        }
+        smallImage: childImageSharp {
+          gatsbyImageData(
+            width: 100
+            aspectRatio: 1.8
+            transformOptions: { fit: COVER, cropFocus: NORTH }
+          )
+        }
+      }
+    }
+  `)
+
   return (
     <Container maxWidth="lg">
       <Typography
@@ -50,17 +89,14 @@ const About = () => {
               {person.name}
             </Typography>
 
-            <Avatar className={classes.avatar}>
-              <StaticImage
-                //src="../../images/victor.jpg"
-                src={person.avatar}
-                alt={person.name}
-                placeholder="blurred"
-                layout="fixed"
-                height={100}
-                width={100}
-              />
-            </Avatar>
+            <GatsbyMuiAvatar
+              images={withArtDirection(getImage(data.zhanna.largeImage), [
+                {
+                  media: "(max-width: 1280px)",
+                  image: getImage(data.zhanna.smallImage),
+                },
+              ])}
+            ></GatsbyMuiAvatar>
             <Typography
               variant="body1"
               className="mobile-header"
@@ -69,7 +105,6 @@ const About = () => {
             >
               {person.text.substring(0, 200)}
             </Typography>
-
             <Button
               to="/about"
               color="primary"
