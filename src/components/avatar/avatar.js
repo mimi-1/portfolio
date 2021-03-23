@@ -13,10 +13,16 @@ import Avatar from "@material-ui/core/Avatar"
 
 const useStyles = makeStyles(theme => ({
   avatar: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
+    width: theme.spacing(20),
+    height: theme.spacing(20),
   },
   [theme.breakpoints.down("md")]: {
+    avatar: {
+      width: theme.spacing(10),
+      height: theme.spacing(10),
+    },
+  },
+  [theme.breakpoints.down("sm")]: {
     avatar: {
       width: theme.spacing(6),
       height: theme.spacing(6),

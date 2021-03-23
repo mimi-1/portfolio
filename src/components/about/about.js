@@ -8,7 +8,7 @@ import { Button } from "gatsby-theme-material-ui"
 import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
-
+import InsertEmoticonRoundedIcon from "@material-ui/icons/InsertEmoticonRounded"
 import aboutdata from "../../data/about"
 import GatsbyMuiAvatar from "../avatar/avatar"
 
@@ -46,20 +46,20 @@ const About = () => {
           )
         }
       }
-      victor: file(name: { eq: "zhanna" }) {
+      victor: file(name: { eq: "victor" }) {
         relativePath
         largeImage: childImageSharp {
           gatsbyImageData(
             formats: WEBP
             width: 250
             aspectRatio: 1
-            transformOptions: { fit: COVER, cropFocus: ENTROPY }
+            transformOptions: { fit: COVER, cropFocus: NORTHEAST }
           )
         }
         smallImage: childImageSharp {
           gatsbyImageData(
             width: 100
-            aspectRatio: 1.8
+            aspectRatio: 1.5
             transformOptions: { fit: COVER, cropFocus: NORTH }
           )
         }
@@ -90,12 +90,15 @@ const About = () => {
             </Typography>
 
             <GatsbyMuiAvatar
-              images={withArtDirection(getImage(data.zhanna.largeImage), [
-                {
-                  media: "(max-width: 1280px)",
-                  image: getImage(data.zhanna.smallImage),
-                },
-              ])}
+              images={withArtDirection(
+                getImage(data[person.avatar].largeImage),
+                [
+                  {
+                    media: "(max-width: 1280px)",
+                    image: getImage(data[person.avatar].smallImage),
+                  },
+                ]
+              )}
             ></GatsbyMuiAvatar>
             <Typography
               variant="body1"
@@ -105,19 +108,19 @@ const About = () => {
             >
               {person.text.substring(0, 200)}
             </Typography>
-            <Button
-              to="/about"
-              color="primary"
-              variant="text"
-              disableElevation
-              size="small"
-              startIcon={<ArrowForwardOutlinedIcon fontSize="small" />}
-            >
-              read more
-            </Button>
           </Grid>
         ))}
       </Grid>
+      <Button
+        to="/about"
+        color="primary"
+        variant="text"
+        disableElevation
+        size="small"
+        startIcon={<ArrowForwardOutlinedIcon fontSize="small" />}
+      >
+        read more about us <InsertEmoticonRoundedIcon />
+      </Button>
     </Container>
   )
 }
