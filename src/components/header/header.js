@@ -120,7 +120,7 @@ const Header = props => {
         color="default"
       >
         {menu.map(item => (
-          <ListItem color="default">
+          <ListItem key={item.name} color="default">
             <Button
               color="transparent"
               to={item.link}

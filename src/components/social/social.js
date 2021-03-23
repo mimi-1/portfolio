@@ -56,7 +56,11 @@ const Social = () => {
         variant="text"
       >
         {social.map(channel => (
-          <Tooltip title={channel.tooltip} placement="right-start">
+          <Tooltip
+            key={channel.name}
+            title={channel.tooltip}
+            placement="right-start"
+          >
             <IconButton
               to={channel.href}
               target="_blank"
