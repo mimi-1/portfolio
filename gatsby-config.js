@@ -17,6 +17,7 @@ module.exports = {
         link: `/about`,
       },
       { name: `Galery`, link: `/galery` },
+      { name: `Happening`, link: `/happening` },
       {
         name: `Contact`,
         link: `/contact`,
@@ -32,8 +33,18 @@ module.exports = {
           fonts: {
             google: [
               {
-                family: `Montserrat`,
-                variants: [`300`, `400`, `500`, `600`],
+                family: `Roboto`,
+                variants: [`400`, `500`, `600`],
+              },
+              {
+                family: `Fascinate`,
+              },
+              {
+                family: `Kaushan Script`,
+              },
+              {
+                family: `Oswald`,
+                variants: [`400`, `600`],
               },
             ],
           },

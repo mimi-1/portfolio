@@ -1,31 +1,30 @@
 //https://www.digitalocean.com/community/tutorials/how-to-handle-images-with-graphql-and-the-gatsby-image-api
 
 import React from "react"
-import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
-import { Button } from "gatsby-theme-material-ui"
-import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined"
 import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
-import InsertEmoticonRoundedIcon from "@material-ui/icons/InsertEmoticonRounded"
+import { getImage, withArtDirection } from "gatsby-plugin-image"
+
+import { Button, Fab } from "gatsby-theme-material-ui"
+import UpIcon from "@material-ui/icons/KeyboardArrowUp"
+
 import aboutdata from "../../data/about"
 import GatsbyMuiAvatar from "../avatar/avatar"
+import { makeStyles } from "@material-ui/core/styles"
+import Section from "../layout/section"
+import MoreLink from "../utils/morelink"
 
-// const useStyles = makeStyles(theme => ({
-//   avatar: {
-//     width: theme.spacing(10),
-//     height: theme.spacing(10),
-//   },
-//   [theme.breakpoints.down("sm")]: {
-//     avatar: {
-//       width: theme.spacing(6),
-//       height: theme.spacing(6),
-//     },
-//   },
-// }))
+const useStyles = makeStyles(theme => ({
+  skipLink: {
+    position: "absolute",
+    //bottom: theme.spacing(1),
+    right: theme.spacing(0),
+  },
+}))
 
 const About = () => {
+  const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
       zhanna: file(name: { eq: "zhanna" }) {
@@ -68,22 +67,14 @@ const About = () => {
   `)
 
   return (
-    <Container maxWidth="lg">
-      <Typography
-        variant="h1"
-        className="mobile-header"
-        component="h1"
-        gutterBottom
-      >
-        About
-      </Typography>
+    <Section heading="About">
       <Grid container spacing={3}>
         {aboutdata.map(person => (
           <Grid item key={person.name} xs={12} lg={6}>
             <Typography
-              variant="h2"
+              variant="h3"
               className="mobile-header"
-              component="h2"
+              component="h3"
               gutterBottom
             >
               {person.name}
@@ -111,17 +102,14 @@ const About = () => {
           </Grid>
         ))}
       </Grid>
-      <Button
-        to="/about"
-        color="primary"
-        variant="text"
-        disableElevation
-        size="small"
-        startIcon={<ArrowForwardOutlinedIcon fontSize="small" />}
-      >
-        read more about us <InsertEmoticonRoundedIcon />
-      </Button>
-    </Container>
+
+      <MoreLink>find more about us</MoreLink>
+      {/* <div>
+        <Fab className={classes.skipLink} to="#" color="secondary">
+          <UpIcon />
+        </Fab>
+      </div> */}
+    </Section>
   )
 }
 
