@@ -8,7 +8,7 @@ import Sidebar from "../sidebar/sidebar"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import theme from "../theme"
-
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 import "./layout.css"
 
 import { Fab } from "gatsby-theme-material-ui"
@@ -26,9 +26,9 @@ const useStyles = makeStyles(theme => ({
 
 function ShowFabOnScroll(props) {
   //threshold should be different for different media 200 - for less them sm, 600 starting md
-  // also make it smooth
+  const { threshold } = props
   const classes = useStyles()
-  const trigger = useScrollTrigger({ threshold: 600 })
+  const trigger = useScrollTrigger({ threshold })
 
   return (
     <Grow in={trigger} timeout={1000}>
@@ -40,6 +40,8 @@ function ShowFabOnScroll(props) {
 }
 
 const Layout = props => {
+  const smallMedia = useMediaQuery(theme => theme.breakpoints.down("sm"))
+  const threshold = smallMedia ? 200 : 600
   return (
     <>
       <MuiThemeProvider theme={theme}>
@@ -50,10 +52,10 @@ const Layout = props => {
           <main>{props.children}</main>
         </div>
         <div>
-          <ShowFabOnScroll />
+          <ShowFabOnScroll threshold={threshold} />
         </div>
 
-        {/* <Footer /> */}
+        <Footer />
       </MuiThemeProvider>
     </>
   )
