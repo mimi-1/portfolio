@@ -7,6 +7,8 @@ import SEO from "../components/seo/seo"
 import Hero from "../components/hero/hero"
 import MUtest from "../components/MUtest/MUtest"
 import About from "../components/about/about"
+import Subscribe from "../components/subscribe/subscribe"
+import Section from "../components/layout/section"
 
 const IndexPage = () => (
   <>
@@ -15,16 +17,20 @@ const IndexPage = () => (
       <Hero />
       <Container component="main" maxWidth="lg">
         <About />
-
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
-        <p>
-          <Link to="/about/">Go to page 2</Link> <br />
-        </p>
-        <p>
-          <Link to="/page-2/">Go to page 2</Link> <br />
-        </p>
+        <Section>
+          <Subscribe />
+        </Section>
+        <Section>
+          <h1>Hi people</h1>
+          <p>Welcome to your new Gatsby site.</p>
+          <p>Now go build something great.</p>
+          <p>
+            <Link to="/about/">Go to page 2</Link> <br />
+          </p>
+          <p>
+            <Link to="/page-2/">Go to page 2</Link> <br />
+          </p>
+        </Section>
       </Container>
     </Layout>
   </>

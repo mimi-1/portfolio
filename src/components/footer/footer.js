@@ -1,11 +1,17 @@
 import * as React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import { Box, Container, Typography } from "@material-ui/core"
+import { Box, Typography } from "@material-ui/core"
+import image from "../../images/wave.svg"
 
 const useStyles = makeStyles(theme => ({
   footer: {
-    color: theme.palette.common.white,
-    backgroundColor: theme.palette.grey[900],
+    //color: theme.palette.common.white,
+    color: theme.palette.common.black,
+    // backgroundColor: theme.palette.grey[900],
+    backgroundImage: `url(${image})`,
+    backgroundOrigin: "border-box",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
 }))
 
@@ -14,15 +20,13 @@ const Footer = () => {
   const copyright = "Star Dust Jazz Duo"
   return (
     <Box component="footer" className={classes.footer}>
-      <Container maxWidth="md">
-        <Box padding={4}>
-          <Box textAlign="center" marginTop={2}>
-            <Typography variant="caption">
-              &copy; {new Date().getFullYear()} {copyright}
-            </Typography>
-          </Box>
+      <Box padding={4}>
+        <Box textAlign="center" marginTop={2}>
+          <Typography variant="caption">
+            &copy; {new Date().getFullYear()} {copyright}
+          </Typography>
         </Box>
-      </Container>
+      </Box>
     </Box>
   )
 }

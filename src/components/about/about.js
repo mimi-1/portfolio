@@ -6,9 +6,6 @@ import Grid from "@material-ui/core/Grid"
 import { useStaticQuery, graphql } from "gatsby"
 import { getImage, withArtDirection } from "gatsby-plugin-image"
 
-import { Button, Fab } from "gatsby-theme-material-ui"
-import UpIcon from "@material-ui/icons/KeyboardArrowUp"
-
 import aboutdata from "../../data/about"
 import GatsbyMuiAvatar from "../avatar/avatar"
 import { makeStyles } from "@material-ui/core/styles"
@@ -22,6 +19,13 @@ const useStyles = makeStyles(theme => ({
     right: theme.spacing(0),
   },
 }))
+{
+  /* <div>
+        <Fab className={classes.skipLink} to="#" color="secondary">
+          <UpIcon />
+        </Fab>
+      </div> */
+}
 
 const About = () => {
   const classes = useStyles()
@@ -104,11 +108,6 @@ const About = () => {
       </Grid>
 
       <MoreLink>find more about us</MoreLink>
-      {/* <div>
-        <Fab className={classes.skipLink} to="#" color="secondary">
-          <UpIcon />
-        </Fab>
-      </div> */}
     </Section>
   )
 }
