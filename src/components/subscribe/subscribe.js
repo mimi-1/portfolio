@@ -1,5 +1,6 @@
 //https://mailchimp.com/developer/marketing/docs/fundamentals/
 //https://mailchimp.com/developer/marketing/guides/create-your-first-audience/
+//https://www.gatsbyjs.com/docs/building-a-contact-form/
 
 import React, { useState, useEffect } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
@@ -8,12 +9,12 @@ import Button from "@material-ui/core/Button"
 import { Typography } from "@material-ui/core"
 
 const Subscribe = () => {
-  useEffect(() => {
-    effect
-    return () => {
-      cleanup
-    }
-  }, [input])
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
   const [email, setEmail] = useState("")
   const [result, setResult] = useState({})
 

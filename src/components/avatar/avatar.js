@@ -1,6 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { makeStyles } from "@material-ui/styles"
 import Avatar from "@material-ui/core/Avatar"
 

@@ -16,7 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import Drawer from "@material-ui/core/Drawer"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
-import { grey, pink } from "@material-ui/core/colors"
+import { grey, black, pink } from "@material-ui/core/colors"
 
 const menu = [
   {
@@ -71,9 +71,7 @@ const darkTheme = createMuiTheme({
   palette: {
     type: "dark",
     primary: {
-      light: grey[200],
-      main: grey[500],
-      dark: grey[900],
+      main: grey[900],
     },
     secondary: {
       light: pink[200],
@@ -139,7 +137,7 @@ const Header = props => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.grow}>
-        <AppBar position="fixed" color="transparent" elevation={0}>
+        <AppBar position="sticky" elevation={0}>
           <Toolbar color="default">
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

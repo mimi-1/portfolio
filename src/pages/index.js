@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import Container from "@material-ui/core/Container"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
@@ -14,8 +13,8 @@ const IndexPage = () => (
   <>
     <SEO title="Home" />
     <Layout>
-      <Hero />
-      <Container component="main" maxWidth="lg">
+      <Container component="main" disableGutters maxWidth={false}>
+        <Hero />
         <About />
         <Section>
           <Subscribe />

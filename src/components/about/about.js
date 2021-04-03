@@ -19,13 +19,6 @@ const useStyles = makeStyles(theme => ({
     right: theme.spacing(0),
   },
 }))
-{
-  /* <div>
-        <Fab className={classes.skipLink} to="#" color="secondary">
-          <UpIcon />
-        </Fab>
-      </div> */
-}
 
 const About = () => {
   const classes = useStyles()
