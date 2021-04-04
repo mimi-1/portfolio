@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     padding: 0,
     margin: 0,
     position: "static",
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     fontWeight: 600,
     noWrap: "true",
     color: "white",
@@ -16,11 +16,13 @@ const useStyles = makeStyles({
     writingMode: "vertical-rl",
     textOrientation: "mixed",
     textDecoration: "none",
-    marginTop: "1rem",
+    marginTop: "4rem",
+    paddingLeft: 0,
+    paddingRight: "1rem",
   },
 })
 
-const Logo = props => {
+const Logo = () => {
   const classes = useStyles()
   return (
     <Button>

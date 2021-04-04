@@ -31,7 +31,7 @@ function ShowFabOnScroll(props) {
   const trigger = useScrollTrigger({ threshold })
 
   return (
-    <Grow in={trigger} timeout={1000}>
+    <Grow in={trigger} timeout={800}>
       <Fab to="#" color="secondary" size="small" className={classes.skipLink}>
         <UpIcon />
       </Fab>
@@ -41,16 +41,14 @@ function ShowFabOnScroll(props) {
 
 const Layout = props => {
   const smallMedia = useMediaQuery(theme => theme.breakpoints.down("sm"))
-  const threshold = smallMedia ? 200 : 600
+  const threshold = smallMedia ? 150 : 500
   return (
     <>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Sidebar />
         <Header />
-        <div>
-          <main>{props.children}</main>
-        </div>
+        <main>{props.children}</main>
         <div>
           <ShowFabOnScroll threshold={threshold} />
         </div>

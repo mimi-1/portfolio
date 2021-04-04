@@ -13,7 +13,7 @@ const IndexPage = () => (
   <>
     <SEO title="Home" />
     <Layout>
-      <Container component="main" disableGutters maxWidth={false}>
+      <Container disableGutters maxWidth={false}>
         <Hero />
         <About />
         <Section>

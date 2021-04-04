@@ -65,7 +65,7 @@ const About = () => {
 
   return (
     <Section heading="About">
-      <Grid container spacing={3}>
+      <Grid container spacing={6}>
         {aboutdata.map(person => (
           <Grid item key={person.name} xs={12} lg={6}>
             <Typography

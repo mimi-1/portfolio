@@ -1,27 +1,22 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import Paper from "@material-ui/core/Paper"
-import { useStaticQuery, graphql } from "gatsby"
+// import { useStaticQuery, graphql } from "gatsby"
 import {
   StaticImage,
-  GatsbyImage,
-  getImage,
-  withArtDirection,
+  // GatsbyImage,
+  // getImage,
+  // withArtDirection,
 } from "gatsby-plugin-image"
-import { Hidden, Grow } from "@material-ui/core/"
+import { Hidden, Fade, Zoom, Container, Box } from "@material-ui/core/"
 import { createMuiTheme } from "@material-ui/core/styles"
+// import { positions, compose } from "@material-ui/system"
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    width: "calc(100vw - 2.5rem)",
+    position: "relative",
     height: "auto",
     marginBottom: theme.spacing(4),
-    zIndex: "1",
-  },
-  heroText: {
-    position: "absolute",
-    top: "10%",
-    left: "30%",
+    zIndex: "5",
   },
 }))
 
@@ -71,48 +66,51 @@ const Hero = () => {
 
   return (
     <>
-      {/* <Paper className={classes.hero}>
-        //{" "}
-        {/* <GatsbyImage
-    //    alt="StartDust Jazz Duo hero image"
-    //    objectPosition="left top"
-    //    image={images}
-    //  /> */}
       <Hidden smDown>
-        <div>
-          <StaticImage
-            layout="fullWidth"
-            aspectRatio={3.19}
-            backgroundColor="#FFF"
-            src="../../images/hero_desktop.jpg"
-            alt="StartDust Jazz Duo hero image"
-            placeholder="blurred"
-            objectPosition="left top"
-            transformOptions={{ fit: "cover" }}
-          />
-
-          <StaticImage
-            classsName={classes.heroText}
-            layout="constrained"
-            width={400}
-            src="../../images/StarDustJazz_desktop.png"
-            alt="StartDust Jazz Duo"
-            transformOptions={{ fit: "cover" }}
-          />
-        </div>
+        <Box position="relative">
+          <Fade in timeout={8000}>
+            <StaticImage
+              objectPosition="left top"
+              src="../../images/hero_desktop.jpg"
+              alt="StartDust Jazz Duo hero image"
+              placeholder="none"
+              objectPosition="left top"
+              transformOptions={{ fit: "cover" }}
+            />
+          </Fade>
+          <Zoom in timeout={5000}>
+            <Box
+              position="absolute"
+              top="35%"
+              left="40%"
+              zIndex="tooltip"
+              width="25%"
+              minWidth={300}
+            >
+              <StaticImage
+                layout="constrained"
+                placeholder="none"
+                src="../../images/hero_logo.png"
+                alt="StartDust Jazz Duo"
+                transformOptions={{ fit: "cover" }}
+              />
+            </Box>
+          </Zoom>
+        </Box>
+        {/* </Container> */}
       </Hidden>
       <Hidden mdUp>
-        <StaticImage
-          layout="fullWidth"
-          backgroundColor="#FFF"
-          src="../../images/hero_mobile.jpg"
-          alt="StartDust Jazz Duo hero mobile image"
-          placeholder="blurred"
-          objectPosition="left top"
-          transformOptions={{ fit: "contain", trim: 40, cropFocus: "center" }}
-        />
+        <Container maxWidth="md" disableGutters>
+          <StaticImage
+            // layout="fullWidth"
+            backgroundColor="#FFF"
+            src="../../images/hero_mobile.jpg"
+            alt="StartDust Jazz Duo hero mobile image"
+            placeholder="blurred"
+            objectPosition="left top"
+          />
+        </Container>
       </Hidden>
-      {/*</Paper> */}
     </>
   )
 }
