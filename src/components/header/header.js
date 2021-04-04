@@ -63,7 +63,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   drawerPaper: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    paddingTop: 30,
   },
 }))
 
@@ -101,8 +102,8 @@ const Header = props => {
   const renderMobileMenu = (
     <Drawer
       id={mobileMenuId}
-      anchor="top"
-      elevation={10}
+      anchor="right"
+      elevation={20}
       in
       timeout={200}
       open={isMobileMenuOpen}
