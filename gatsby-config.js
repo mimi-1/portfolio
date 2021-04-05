@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Portfolior`,
-    description: `Portfolio site`,
+    title: `StarDustJazzDuo`,
+    description: `Website of the group Stardust Jazz Duo, blog about jazz and music, order musix for your event`,
     author: `Maryna Khatnyuk`,
     menuLinks: [
       {

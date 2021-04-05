@@ -7,8 +7,6 @@ import { grey, pink } from "@material-ui/core/colors"
 
 const useStyles = makeStyles({
   sidebar: {
-    //backgroundColor: backgroundColor,
-    //position: "absolute",
     top: 0,
     left: 0,
     height: "100%",

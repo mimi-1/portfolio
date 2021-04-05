@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button, IconButton, Link } from "gatsby-theme-material-ui"
+import { Button, IconButton } from "gatsby-theme-material-ui"
 
 import {
   makeStyles,
@@ -9,14 +9,11 @@ import {
 
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
-
-// import MenuItem from "@material-ui/core/MenuItem"
-// import Menu from "@material-ui/core/Menu"
 import MenuIcon from "@material-ui/icons/Menu"
 import Drawer from "@material-ui/core/Drawer"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
-import { grey, black, pink } from "@material-ui/core/colors"
+import { grey, pink } from "@material-ui/core/colors"
 
 const menu = [
   {

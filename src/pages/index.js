@@ -21,11 +21,8 @@ const IndexPage = () => (
         </Section>
         <Section>
           <h1>Hi people</h1>
-          <p>Welcome to your new Gatsby site.</p>
-          <p>Now go build something great.</p>
-          <p>
-            <Link to="/about/">Go to page 2</Link> <br />
-          </p>
+          <p>The link to submit email doesnt work properly yet</p>
+          <p>Some pages dont work. Just check the animation and banner</p>
           <p>
             <Link to="/page-2/">Go to page 2</Link> <br />
           </p>
