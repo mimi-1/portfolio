@@ -18,7 +18,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
-  margin-left: 2.5rem;
+  margin-left: 3rem;
 }
 article,
 aside,
@@ -192,7 +192,7 @@ button::-moz-focus-inner {
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring,
 button:-moz-focusring {
-  outline: 1px dotted ButtonText;
+  outline: 1px dotted red;
 }
 fieldset {
   border: 1px solid silver;

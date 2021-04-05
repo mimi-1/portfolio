@@ -46,8 +46,8 @@ const Layout = props => {
     <>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <Sidebar />
         <Header />
+        <Sidebar />
         <main>{props.children}</main>
         <div>
           <ShowFabOnScroll threshold={threshold} />

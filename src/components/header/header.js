@@ -1,12 +1,7 @@
 import React, { useState } from "react"
 import { Button, IconButton } from "gatsby-theme-material-ui"
 
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-  CssBaseline,
-} from "@material-ui/core"
+import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core"
 
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -68,7 +63,7 @@ const useStyles = makeStyles(theme => ({
       display: "none",
     },
   },
-  drawerPaper: {
+  mobileMenu: {
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     paddingTop: theme.spacing(10),
   },
@@ -82,9 +77,6 @@ const appBarTheme = createMuiTheme({
     },
     secondary: {
       main: pink[500],
-    },
-    action: {
-      active: pink[200],
     },
   },
 })
@@ -109,13 +101,13 @@ const Header = props => {
     <Drawer
       id={mobileMenuId}
       anchor="right"
-      elevation={20}
+      elevation={0}
       in
       timeout={200}
       open={isMobileMenuOpen}
       onClose={toggleDrawer(false)}
       classes={{
-        paper: classes.drawerPaper,
+        paper: classes.mobileMenu,
       }}
     >
       <List

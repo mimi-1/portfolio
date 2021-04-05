@@ -1,14 +1,14 @@
 import * as React from "react"
-import { makeStyles, Button } from "@material-ui/core"
-import { Typography } from "@material-ui/core"
-import { Link } from "gatsby"
+import { makeStyles } from "@material-ui/core"
+// import { Typography } from "@material-ui/core"
+import { Button } from "gatsby-theme-material-ui"
 
 const useStyles = makeStyles({
   logo: {
     padding: 0,
     margin: 0,
     position: "static",
-    fontSize: "0.8rem",
+    fontSize: "1rem",
     fontWeight: 600,
     noWrap: "true",
     color: "white",
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     writingMode: "vertical-rl",
     textOrientation: "mixed",
     textDecoration: "none",
-    marginTop: "4rem",
+    marginTop: "2rem",
     paddingLeft: 0,
     paddingRight: "1rem",
   },
@@ -25,10 +25,8 @@ const useStyles = makeStyles({
 const Logo = () => {
   const classes = useStyles()
   return (
-    <Button>
-      <Link className={classes.logo} to="/">
-        <Typography variant="h6">StartDust Jazz Duo</Typography>
-      </Link>
+    <Button className={classes.logo} to="/">
+      StartDust Jazz Duo
     </Button>
   )
 }
