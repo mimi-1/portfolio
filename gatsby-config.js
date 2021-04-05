@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `StarDustJazzDuo`,
-    description: `Website of the group Stardust Jazz Duo, blog about jazz and music, order musix for your event`,
-    author: `Maryna Khatnyuk`,
+    title: `StarDust Jazz Duo`,
+    description: `Promotional website for a musical group Stardust Jazz Duo, blog about jazz and music, order music for your event`,
+    author: `Maryna, Victor, Zhanna, Taras`,
     menuLinks: [
       {
         name: `Home`,
@@ -34,7 +34,7 @@ module.exports = {
       resolve: "gatsby-plugin-mailchimp",
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT, // string; add your MC list endpoint here; see instructions below
-        timeout: 3500, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
+        timeout: 4000, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
       },
     },
     {
@@ -97,13 +97,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Maryna Khatnyuk`,
-        short_name: `MK`,
+        name: `StarDust Jazz Duo`,
+        short_name: `StarDust`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#91509D`,
+        theme_color: `#DCEDC8`,
         display: `standalone`,
-        icon: `src/images/star_icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/music.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,

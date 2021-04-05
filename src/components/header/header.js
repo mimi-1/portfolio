@@ -5,7 +5,8 @@ import {
   makeStyles,
   createMuiTheme,
   ThemeProvider,
-} from "@material-ui/core/styles"
+  CssBaseline,
+} from "@material-ui/core"
 
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -38,8 +39,16 @@ const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
   },
-  menuButton: {
+  menuButtonDesktop: {
     marginRight: theme.spacing(2),
+    "&:active": {
+      color: theme.palette.secondary.light,
+    },
+  },
+  menuButtonDesktopActive: {
+    borderBottomWidth: 3,
+    borderBottomStyle: "groove",
+    borderBottomColor: theme.palette.primary.light,
   },
   title: {
     display: "none",
@@ -61,20 +70,21 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     backgroundColor: "rgba(0, 0, 0, 0.7)",
-    paddingTop: 30,
+    paddingTop: theme.spacing(10),
   },
 }))
 
-const darkTheme = createMuiTheme({
+const appBarTheme = createMuiTheme({
   palette: {
     type: "dark",
     primary: {
       main: grey[900],
     },
     secondary: {
-      light: pink[200],
       main: pink[500],
-      dark: pink[900],
+    },
+    action: {
+      active: pink[200],
     },
   },
 })
@@ -90,12 +100,11 @@ const Header = props => {
     ) {
       return
     } else {
-      setIsMobileMenuOpen(!isMobileMenuOpen)
+      setIsMobileMenuOpen(open)
     }
   }
 
   const mobileMenuId = "menu-mobile"
-
   const renderMobileMenu = (
     <Drawer
       id={mobileMenuId}
@@ -133,14 +142,20 @@ const Header = props => {
   )
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={appBarTheme}>
       <div className={classes.grow}>
         <AppBar position="sticky" elevation={0}>
           <Toolbar color="default">
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               {menu.map(item => (
-                <Button to={item.link}>{item.name}</Button>
+                <Button
+                  className={classes.menuButtonDesktop}
+                  to={item.link}
+                  activeClassName={classes.menuButtonDesktopActive}
+                >
+                  {item.name}
+                </Button>
               ))}
             </div>
             <div className={classes.sectionMobile}>

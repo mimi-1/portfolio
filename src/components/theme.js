@@ -14,7 +14,7 @@ const theme = createMuiTheme({
     type: "light",
   },
   typography: {
-    // fontFamily: ["Roboto", "Anton"].join(","),
+    // fontFamily: ["Roboto", "Oswald"].join(","),
     fontSize: 16,
     h1: {
       fontWeight: 600,
