@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import InsertEmoticonRoundedIcon from "@material-ui/icons/InsertEmoticonRounded"
 import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined"
 import { makeStyles } from "@material-ui/core/styles"
+import { Hidden } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   linkContainer: {
@@ -14,6 +15,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(10),
     textTransform: "lowercase",
     fontFamily: "Kaushan Script",
+    fontSize: "1.2rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
+      margin: 0,
+    },
   },
   icon: {
     marginLeft: theme.spacing(2),
@@ -37,7 +43,10 @@ const MoreLink = props => {
         startIcon={<ArrowForwardOutlinedIcon />}
       >
         {props.children}
-        {props.emotions}&<InsertEmoticonRoundedIcon className={classes.icon} />
+        <Hidden smDown>
+          {props.emotions}&
+          <InsertEmoticonRoundedIcon className={classes.icon} />
+        </Hidden>
       </Button>
     </div>
   )
