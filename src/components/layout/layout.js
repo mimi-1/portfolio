@@ -14,13 +14,16 @@ import "./layout.css"
 import { Fab } from "gatsby-theme-material-ui"
 import UpIcon from "@material-ui/icons/KeyboardArrowUp"
 import { makeStyles } from "@material-ui/core/styles"
-import { Grow } from "@material-ui/core"
+import { Grid, Grow } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   skipLink: {
     position: "fixed",
     bottom: theme.spacing(1),
     right: theme.spacing(1),
+  },
+  main: {
+    minHeight: "calc(100vh - 8rem)",
   },
 }))
 
@@ -42,18 +45,28 @@ function ShowFabOnScroll(props) {
 const Layout = props => {
   const smallMedia = useMediaQuery(theme => theme.breakpoints.down("sm"))
   const threshold = smallMedia ? 150 : 500
+  const classes = useStyles()
   return (
     <>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Header />
         <Sidebar />
-        <main>{props.children}</main>
-        <div>
-          <ShowFabOnScroll threshold={threshold} />
-        </div>
+        <Grid
+          container
+          direction="column"
+          justify="space-between"
+          alignItems="stretch"
+        >
+          <Grid item>
+            <main className={classes.main}>{props.children}</main>
+          </Grid>
+          <Grid item>
+            <Footer />
+          </Grid>
+        </Grid>
 
-        <Footer />
+        <ShowFabOnScroll threshold={threshold} />
       </MuiThemeProvider>
     </>
   )
