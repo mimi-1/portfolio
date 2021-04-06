@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import { Button, IconButton } from "gatsby-theme-material-ui"
-
 import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core"
-
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import MenuIcon from "@material-ui/icons/Menu"
@@ -11,7 +9,9 @@ import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import { grey, pink } from "@material-ui/core/colors"
 
-const menu = [
+import { useStaticQuery, graphql } from "gatsby"
+
+const stubMenu = [
   {
     name: `Home`,
     link: `/`,
@@ -19,14 +19,6 @@ const menu = [
   {
     name: `About`,
     link: `/about`,
-  },
-  {
-    name: `Galery`,
-    link: `/galery`,
-  },
-  {
-    name: `Contact`,
-    link: `/contact`,
   },
 ]
 
@@ -82,6 +74,25 @@ const appBarTheme = createMuiTheme({
 })
 
 const Header = props => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            menuLinks {
+              link
+              name
+            }
+          }
+        }
+      }
+    `
+  )
+
+  const menu =
+    site.siteMetadata.menuLinks.length > 0
+      ? site.siteMetadata.menuLinks
+      : stubMenu
   const classes = useStyles()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const toggleDrawer = open => event => {
@@ -142,6 +153,7 @@ const Header = props => {
             <div className={classes.sectionDesktop}>
               {menu.map(item => (
                 <Button
+                  key={item.name}
                   className={classes.menuButtonDesktop}
                   to={item.link}
                   activeClassName={classes.menuButtonDesktopActive}

@@ -79,7 +79,7 @@ const Hero = () => {
     <>
       {/* <Hidden smDown> */}
       <Box position="relative">
-        <Fade clone in timeout={8000}>
+        <Fade in timeout={8000}>
           <StaticImage
             className={classes.heroImage}
             objectPosition="center top"

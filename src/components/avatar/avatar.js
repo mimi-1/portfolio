@@ -29,12 +29,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const GatsbyMuiAvatar = ({ images }) => {
+const GatsbyMuiAvatar = ({ images, alt }) => {
   const classes = useStyles()
 
   return (
     <Avatar className={classes.avatar}>
-      <GatsbyImage image={images} />
+      <GatsbyImage image={images} alt={alt} />
     </Avatar>
   )
 }

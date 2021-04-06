@@ -1,7 +1,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import useScrollTrigger from "@material-ui/core/useScrollTrigger"
-
 import Header from "../header/header"
 import Footer from "../footer/footer"
 import Sidebar from "../sidebar/sidebar"
@@ -10,7 +9,6 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import theme from "../theme"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import "./layout.css"
-
 import { Fab } from "gatsby-theme-material-ui"
 import UpIcon from "@material-ui/icons/KeyboardArrowUp"
 import { makeStyles } from "@material-ui/core/styles"
@@ -46,6 +44,7 @@ const Layout = props => {
   const smallMedia = useMediaQuery(theme => theme.breakpoints.down("sm"))
   const threshold = smallMedia ? 150 : 500
   const classes = useStyles()
+
   return (
     <>
       <MuiThemeProvider theme={theme}>

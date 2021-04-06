@@ -28,7 +28,6 @@ const About = () => {
         relativePath
         largeImage: childImageSharp {
           gatsbyImageData(
-            formats: WEBP
             width: 250
             aspectRatio: 1
             transformOptions: { fit: COVER, cropFocus: ENTROPY }
@@ -46,7 +45,6 @@ const About = () => {
         relativePath
         largeImage: childImageSharp {
           gatsbyImageData(
-            formats: WEBP
             width: 250
             aspectRatio: 1
             transformOptions: { fit: COVER, cropFocus: NORTHEAST }
@@ -87,6 +85,7 @@ const About = () => {
                   },
                 ]
               )}
+              alt={`${person.name} avatar`}
             ></GatsbyMuiAvatar>
             <Typography
               variant="body1"

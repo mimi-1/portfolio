@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     backgroundOrigin: "border-box",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    border: "solid red 2px",
+    //border: "solid red 2px",
   },
 }))
 
