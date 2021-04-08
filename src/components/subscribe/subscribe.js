@@ -17,16 +17,18 @@ const Subscribe = () => {
   // }, [input])
 
   const [email, setEmail] = useState("")
-  const [listFields, setListFields] = useState({ FNAME: "Unknown", LNAME: "" })
+  const [listFields, setListFields] = useState({ FNAME: "", LNAME: "" })
   const [result, setResult] = useState({})
 
   const handleSubmit = e => {
+    e.preventDefault()
     console.log("HANDLE SUBMIT FORM")
     addToMailchimp(email, listFields)
       .then(data => {
         // I recommend setting data to React state
         // but you can do whatever you want (including ignoring this `then()` altogether)
-        console.log(data)
+        setResult(data)
+        console.log(result)
       })
       .catch(() => {
         // unnecessary because Mailchimp only ever
@@ -48,11 +50,13 @@ const Subscribe = () => {
     console.log(event.target.name)
     const value = event.target.value
     const name = event.target.name
-    const newListFileds = { ...listFields, ...{ name: value } }
+    const newListFileds = { ...listFields }
+    newListFileds[name] = value
+    setListFields(newListFileds)
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={event => handleSubmit(event)}>
       <TextField
         id="FNAME"
         label="First Name"
@@ -60,7 +64,7 @@ const Subscribe = () => {
         name="FNAME"
         variant="outlined"
         onChange={handleFieldsChange}
-        // value={listFields.FNAME}
+        value={listFields.FNAME}
         error={false}
       />
 
@@ -70,7 +74,8 @@ const Subscribe = () => {
         type="text"
         name="LNAME"
         variant="outlined"
-        onChange={handleFieldsChange}
+        value={listFields.LNAME}
+        onChange={e => handleFieldsChange(e)}
       />
 
       <TextField
@@ -82,7 +87,8 @@ const Subscribe = () => {
         autoComplete="email"
         variant="outlined"
         onChange={handleEmailChange}
-        helperText="Email is required field"
+        // helperText="Email is required field"
+        value={email}
       />
 
       <Button variant="contained" color="primary" label="Submit" type="submit">

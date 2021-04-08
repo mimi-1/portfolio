@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Hero = () => {
+const Hero = props => {
   const classes = useStyles()
   const smallWidth = theme.breakpoints.values.md
   const smallHeight = smallWidth * 0.75
@@ -79,7 +79,7 @@ const Hero = () => {
     <>
       {/* <Hidden smDown> */}
       <Box position="relative">
-        <Fade in timeout={8000}>
+        <Fade in timeout={props.isAnimated ? 8000 : 0}>
           <StaticImage
             className={classes.heroImage}
             objectPosition="center top"
@@ -89,7 +89,7 @@ const Hero = () => {
             transformOptions={{ fit: "cover" }}
           />
         </Fade>
-        <Zoom in timeout={5000}>
+        <Zoom in timeout={props.isAnimated ? 5000 : 0}>
           <Box
             className={classes.heroText}
             position="absolute"

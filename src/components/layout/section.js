@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Container, Typography, Slide } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
@@ -13,7 +13,11 @@ const useStyles = makeStyles(theme => ({
 const Section = props => {
   const classes = useStyles()
   return (
-    <Slide in={props.in} direction="up" timeout={props.timeout}>
+    <Slide
+      in={props.in}
+      direction="up"
+      timeout={props.isAnimated ? props.timeout : 0}
+    >
       <Container className={classes.root} component="section" maxWidth="xl">
         <Typography variant="h2" component="h2" gutterBottom>
           {props.heading}
@@ -26,11 +30,13 @@ const Section = props => {
 
 Section.defaultProps = {
   in: true,
-  timeout: 5000,
+  isAnimated: false,
+  timeout: { appear: 0, enter: 5000, exit: 0 },
 }
 
 Section.propTypes = {
   in: PropTypes.bool,
+  isAnimated: PropTypes.bool,
 }
 
 export default Section
