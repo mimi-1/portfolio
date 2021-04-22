@@ -1,3 +1,5 @@
+//stackoverflow.com/questions/63817826/react-js-framer-motion-animate-only-on-initial-page-load
+
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Container from "@material-ui/core/Container"

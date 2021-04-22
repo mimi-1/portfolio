@@ -12,7 +12,9 @@ import theme from "../theme"
 
 const useStyles = makeStyles(theme => ({
   heroImage: {
+    backgroundColor: "#000000",
     minHeight: theme.spacing(50),
+    maxHeight: "calc(100vh - 3rem)",
   },
   heroText: {
     left: 0,
@@ -77,19 +79,35 @@ const Hero = props => {
 
   return (
     <>
-      {/* <Hidden smDown> */}
       <Box position="relative">
-        <Fade in timeout={props.isAnimated ? 8000 : 0}>
-          <StaticImage
-            className={classes.heroImage}
-            objectPosition="center top"
-            src="../../images/hero_desktop.jpg"
-            alt="StartDust Jazz Duo hero image"
-            placeholder="none"
-            transformOptions={{ fit: "cover" }}
-          />
-        </Fade>
-        <Zoom in timeout={props.isAnimated ? 5000 : 0}>
+        <Hidden smDown>
+          <Fade in timeout={props.isAnimated ? 8000 : 0}>
+            <StaticImage
+              className={classes.heroImage}
+              objectPosition="center top"
+              src="../../images/hero_desktop.png"
+              alt="StartDust Jazz Duo hero image"
+              placeholder="dominantColor"
+              layout="fullWidth"
+              fit="cover"
+            />
+          </Fade>
+        </Hidden>
+        <Hidden mdUp>
+          <Fade in>
+            <StaticImage
+              backgroundColor="#000"
+              src="../../images/hero_mobile.png"
+              alt="StartDust Jazz Duo hero mobile image"
+              placeholder="blurred"
+              placeholder="dominantColor"
+              layout="fullWidth"
+              fit="cover"
+            />
+          </Fade>
+        </Hidden>
+
+        <Zoom in={false} timeout={props.isAnimated ? 5000 : 0}>
           <Box
             className={classes.heroText}
             position="absolute"
@@ -108,21 +126,6 @@ const Hero = props => {
           </Box>
         </Zoom>
       </Box>
-      {/* </Container> */}
-      {/* </Hidden> */}
-      {/* <Hidden mdUp>
-        <Container maxWidth="md" disableGutters>
-          <StaticImage
-            width={smallWidth}
-            height={smallWidth}
-            backgroundColor="#FFF"
-            src="../../images/hero_desktop.jpg"
-            alt="StartDust Jazz Duo hero mobile image"
-            placeholder="blurred"
-            objectPosition="left top"
-          />
-        </Container>
-      </Hidden> */}
     </>
   )
 }
