@@ -9,6 +9,7 @@ import {
 } from "gatsby-plugin-image"
 import { Hidden, Fade, Zoom, Box } from "@material-ui/core/"
 import theme from "../theme"
+import HeroParticles from "./heroParticles"
 
 const useStyles = makeStyles(theme => ({
   heroImage: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 const Hero = props => {
   const classes = useStyles()
   const smallWidth = theme.breakpoints.values.md
-  const smallHeight = smallWidth * 0.75
+  // const smallHeight = smallWidth * 0.75
   // // getting images from graphql
   // const backgrounds = useStaticQuery(graphql`
   //   query {
@@ -106,7 +107,6 @@ const Hero = props => {
             />
           </Fade>
         </Hidden>
-
         <Zoom in={false} timeout={props.isAnimated ? 5000 : 0}>
           <Box
             className={classes.heroText}
@@ -125,6 +125,7 @@ const Hero = props => {
             />
           </Box>
         </Zoom>
+        <HeroParticles />
       </Box>
     </>
   )
