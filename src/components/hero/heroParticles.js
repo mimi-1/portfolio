@@ -1,7 +1,7 @@
 import React from "react"
 import Particles from "react-tsparticles"
 import { makeStyles } from "@material-ui/core/styles"
-
+import Star1Img from "../../images/star1.png"
 const useStyles = makeStyles(theme => ({
   particles: {
     position: "absolute",
@@ -16,6 +16,9 @@ const useStyles = makeStyles(theme => ({
 const HeroParticles = () => {
   const classes = useStyles()
   const particles0 = {
+    // fullScreen: {
+    //   enable: true,
+    // },
     fpsLimit: 60,
     background: {
       color: {
@@ -23,7 +26,7 @@ const HeroParticles = () => {
       },
       size: "cover",
       opacity: 0,
-      // position: "50% 50%",
+      position: "50% 50%",
     },
     particles: {
       number: {
@@ -51,7 +54,7 @@ const HeroParticles = () => {
           {
             height: 100,
             replace_color: true,
-            src: "images/star1.png",
+            src: { Star1Img },
             width: 100,
           },
         ],
@@ -60,38 +63,47 @@ const HeroParticles = () => {
       size: {
         random: {
           enable: true,
-          minimumValue: 1,
+          minimumValue: 5,
         },
         value: {
-          min: 6,
-          max: 20,
+          min: 5,
+          max: 25,
         },
-        animation: {
-          count: 10,
-          enable: true,
-          speed: 10,
-          sync: false,
-          destroy: "none",
-          minimumValue: 1,
-          startValue: "random",
-        },
+        // animation: {
+        //   enable: true,
+        //   count: 10,
+        //   speed: 10,
+        //   sync: false,
+        //   destroy: "none",
+        //   minimumValue: 5,
+        //   startValue: "random",
+        // },
       },
       opacity: {
-        animation: {
-          speed: 10,
-          opacityMin: 0,
-          sync: true,
-        },
-        value: 1,
+        value: 0.8,
         random: true,
+        animation: {
+          enable: true,
+          speed: 3,
+          opacityMin: 0.2,
+          sync: false,
+        },
+      },
+      life: {
+        duration: {
+          sync: false,
+          value: 5,
+        },
+        count: 10,
       },
       move: {
         direction: "none",
         enable: true,
         random: true,
-        speed: 1,
+        speed: 0.5,
         straight: false,
-        outMode: "bounce",
+        // decay: 0.05,
+        outMode: "out",
         // trail: {
         //   fillColor: "rgba(48, 49, 62, 0.08)",
         //   enable: true,
@@ -111,17 +123,40 @@ const HeroParticles = () => {
           enable: true,
           mode: "bubble",
         },
-        // resize: true,
+        resize: true,
       },
       modes: {
         bubble: {
           distance: 200,
           duration: 4,
-          size: 22,
+          size: 40,
           opacity: 8,
         },
       },
     },
+    emitters: [
+      {
+        direction: "top-left",
+        // life: {
+        //   count: 3,
+        //   duration: 2,
+        //   delay: 4,
+        // },
+        rate: {
+          delay: 1,
+          quantity: 1,
+        },
+        position: {
+          x: 80,
+          y: 80,
+        },
+        size: {
+          width: 10,
+          height: 10,
+          mode: "percent",
+        },
+      },
+    ],
   }
 
   const particlesInit = main => {
@@ -137,11 +172,11 @@ const HeroParticles = () => {
     <div className={classes.particles}>
       <Particles
         id="tsparticles"
-        params={particles0}
+        options={particles0}
         init={particlesInit}
         loaded={particlesLoaded}
         width={"100%"}
-        height={"80vh"}
+        height={"100vh"}
       />
     </div>
   )
