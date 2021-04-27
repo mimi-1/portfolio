@@ -18,18 +18,25 @@ const useStyles = makeStyles(theme => ({
     maxHeight: "calc(100vh - 3rem)",
   },
   heroText: {
+    top: "20%",
+    // left="40%"
     left: 0,
     right: 0,
     marginLeft: "auto",
     marginRight: "auto",
     minWidth: 300,
+    width: "35%",
     [theme.breakpoints.down("md")]: {
+      top: "20%",
       minWidth: 300,
+      width: "50%",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: 100,
-      left: 0,
-      right: 0,
+    [theme.breakpoints.down("sm")]: {
+      // width: 100,
+      // left: 0,
+      // right: 0,
+      top: "20%",
+      width: "80%",
       marginLeft: "auto",
       marginRight: "auto",
     },
@@ -108,14 +115,7 @@ const Hero = props => {
           </Fade>
         </Hidden>
         <Zoom in timeout={props.isAnimated ? 5000 : 0}>
-          <Box
-            className={classes.heroText}
-            position="absolute"
-            top="35%"
-            left="40%"
-            zIndex={1000}
-            width="30%"
-          >
+          <Box className={classes.heroText} position="absolute" zIndex={1000}>
             <StaticImage
               layout="constrained"
               placeholder="none"

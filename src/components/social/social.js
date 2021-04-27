@@ -10,16 +10,20 @@ import InstagramIcon from "@material-ui/icons/Instagram"
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
+
     "& > *": {
       margin: theme.spacing(1),
     },
   },
   group: {
     margin: 0,
-    paddingBottom: "calc(100vh/5)",
+    marginBottom: "calc(100vh/3)",
+    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "black",
   },
   button: {
     border: "0px",
+    color: theme.palette.primary.light,
   },
 }))
 const social = [
@@ -51,7 +55,6 @@ const Social = () => {
       <ButtonGroup
         className={classes.group}
         orientation="vertical"
-        color="inherit"
         aria-label="social media links group"
         variant="text"
       >
@@ -67,6 +70,7 @@ const Social = () => {
               rel="noopener noreferrer"
               className={classes.button}
               key={channel.name}
+              color="primary"
             >
               <channel.icon />
             </IconButton>

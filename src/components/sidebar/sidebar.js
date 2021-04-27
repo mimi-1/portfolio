@@ -25,24 +25,22 @@ const Sidebar = props => {
         main: grey[500],
         dark: grey[900],
       },
-      secondary: {
-        main: pink[500],
-      },
     },
   })
   const classes = useStyles()
   return (
-    <ThemeProvider theme={darkTheme}>
-      <AppBar
-        component="div"
-        color="default"
-        position="fixed"
-        className={classes.sidebar}
-      >
-        <Logo />
-        <Social />
-      </AppBar>
-    </ThemeProvider>
+    // <ThemeProvider theme={darkTheme}>
+    <AppBar
+      component="div"
+      color="transparent"
+      position="fixed"
+      className={classes.sidebar}
+      elevation={0}
+    >
+      <Logo />
+      <Social />
+    </AppBar>
+    // </ThemeProvider>
   )
 }
 

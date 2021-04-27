@@ -6,7 +6,8 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   root: {
     //top left bottom right -> refactor to use spacing
-    padding: "2em 2em 1em 3em",
+    padding: "2em 2em 1em 6em",
+    paddingLeft: theme.spacing(15),
   },
 }))
 
