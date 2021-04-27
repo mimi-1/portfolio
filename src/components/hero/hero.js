@@ -107,14 +107,14 @@ const Hero = props => {
             />
           </Fade>
         </Hidden>
-        <Zoom in={false} timeout={props.isAnimated ? 5000 : 0}>
+        <Zoom in timeout={props.isAnimated ? 5000 : 0}>
           <Box
             className={classes.heroText}
             position="absolute"
             top="35%"
             left="40%"
             zIndex={1000}
-            width="25%"
+            width="30%"
           >
             <StaticImage
               layout="constrained"

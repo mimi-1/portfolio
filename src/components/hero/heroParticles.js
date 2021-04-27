@@ -39,6 +39,11 @@ const HeroParticles = () => {
       value: 20,
       color: {
         value: ["#FFFFFF", "FFFBE6", "#E6EAFF", "#FFE6FB", "#FFE6FF"],
+        animation: {
+          enable: true,
+          speed: 20,
+          sync: false,
+        },
       },
       shape: {
         character: {
@@ -63,11 +68,11 @@ const HeroParticles = () => {
       size: {
         random: {
           enable: true,
-          minimumValue: 5,
+          minimumValue: 10,
         },
         value: {
-          min: 5,
-          max: 25,
+          min: 10,
+          max: 30,
         },
         // animation: {
         //   enable: true,
@@ -144,15 +149,15 @@ const HeroParticles = () => {
         // },
         rate: {
           delay: 1,
-          quantity: 1,
+          quantity: 2,
         },
         position: {
-          x: 80,
-          y: 80,
+          x: 90,
+          y: 90,
         },
         size: {
-          width: 10,
-          height: 10,
+          width: 50,
+          height: 50,
           mode: "percent",
         },
       },
