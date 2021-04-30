@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#000000",
     minHeight: theme.spacing(50),
     maxHeight: "calc(100vh - 3rem)",
+    [theme.breakpoints.down("xs")]: {
+      top: "0",
+      height: "100%",
+    },
   },
   heroText: {
     top: "20%",

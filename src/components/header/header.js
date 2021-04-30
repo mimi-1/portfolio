@@ -24,10 +24,12 @@ const stubMenu = [
 
 const useStyles = makeStyles(theme => ({
   grow: {
+    backgroundColor: "#000",
     flexGrow: 1,
   },
   menuButtonDesktop: {
     marginRight: theme.spacing(2),
+    color: theme.palette.primary.light,
     "&:active": {
       color: theme.palette.secondary.light,
     },
@@ -56,22 +58,22 @@ const useStyles = makeStyles(theme => ({
     },
   },
   mobileMenu: {
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     paddingTop: theme.spacing(10),
   },
 }))
 
-const appBarTheme = createMuiTheme({
-  palette: {
-    type: "dark",
-    primary: {
-      main: grey[900],
-    },
-    secondary: {
-      main: pink[500],
-    },
-  },
-})
+// const appBarTheme = createMuiTheme({
+//   palette: {
+//     type: "dark",
+//     primary: {
+//       main: grey[900],
+//     },
+//     // secondary: {
+//     //   main: pink[500],
+//     // },
+//   },
+// })
 
 const Header = props => {
   const { site } = useStaticQuery(
@@ -111,7 +113,7 @@ const Header = props => {
   const renderMobileMenu = (
     <Drawer
       id={mobileMenuId}
-      anchor="right"
+      anchor="top"
       elevation={0}
       in
       timeout={200}
@@ -130,7 +132,7 @@ const Header = props => {
         {menu.map(item => (
           <ListItem key={item.name} color="default">
             <Button
-              color="transparent"
+              color="secondary"
               to={item.link}
               fullWidth
               disableElevation
@@ -145,38 +147,39 @@ const Header = props => {
   )
 
   return (
-    <ThemeProvider theme={appBarTheme}>
-      <div className={classes.grow}>
-        <AppBar position="sticky" elevation={0}>
-          <Toolbar color="default">
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              {menu.map(item => (
-                <Button
-                  key={item.name}
-                  className={classes.menuButtonDesktop}
-                  to={item.link}
-                  activeClassName={classes.menuButtonDesktopActive}
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </div>
-            <div className={classes.sectionMobile}>
-              <IconButton
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={toggleDrawer(true)}
+    // <ThemeProvider theme={appBarTheme}>
+    <div className={classes.grow}>
+      <AppBar color="transparent" position="sticky" elevation={0}>
+        <Toolbar color="default">
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}>
+            {menu.map(item => (
+              <Button
+                key={item.name}
+                className={classes.menuButtonDesktop}
+                to={item.link}
+                activeClassName={classes.menuButtonDesktopActive}
               >
-                <MenuIcon />
-              </IconButton>
-            </div>
-          </Toolbar>
-        </AppBar>
-        {renderMobileMenu}
-      </div>
-    </ThemeProvider>
+                {item.name}
+              </Button>
+            ))}
+          </div>
+          <div className={classes.sectionMobile}>
+            <IconButton
+              color="secondary"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+          </div>
+        </Toolbar>
+      </AppBar>
+      {renderMobileMenu}
+    </div>
+    // </ThemeProvider>
   )
 }
 
