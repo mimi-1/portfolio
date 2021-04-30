@@ -12,6 +12,9 @@ import theme from "../theme"
 import HeroParticles from "./heroParticles"
 
 const useStyles = makeStyles(theme => ({
+  heroContainer: {
+    backgroundColor: "#000000",
+  },
   heroImage: {
     backgroundColor: "#000000",
     minHeight: theme.spacing(50),
@@ -27,16 +30,16 @@ const useStyles = makeStyles(theme => ({
     minWidth: 300,
     width: "35%",
     [theme.breakpoints.down("md")]: {
-      top: "30%",
+      top: "20%",
       minWidth: 300,
       width: "50%",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       // width: 100,
       // left: 0,
       // right: 0,
       top: "35%",
-      width: "70%",
+      width: "50%",
       marginLeft: "auto",
       marginRight: "auto",
     },
@@ -87,7 +90,7 @@ const Hero = props => {
 
   return (
     <>
-      <Box position="relative">
+      <Box position="relative" className={classes.heroContainer}>
         <Hidden smDown>
           <Fade in timeout={props.isAnimated ? 8000 : 0}>
             <StaticImage
@@ -104,10 +107,11 @@ const Hero = props => {
         <Hidden mdUp>
           <Fade in>
             <StaticImage
+              className={classes.heroImage}
+              objectPosition="center top"
               backgroundColor="#000"
               src="../../images/hero_mobile.png"
               alt="StartDust Jazz Duo hero mobile image"
-              placeholder="blurred"
               placeholder="dominantColor"
               layout="fullWidth"
               fit="cover"
