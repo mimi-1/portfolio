@@ -18,12 +18,15 @@ const useStyles = makeStyles(theme => ({
   group: {
     margin: 0,
     marginBottom: "calc(100vh/3)",
-    backgroundColor: theme.palette.primary.main,
+    // backgroundColor: theme.palette.primary.main,
     backgroundColor: "black",
   },
   button: {
     border: "0px",
-    color: theme.palette.primary,
+    // color: theme.palette.primary.light,
+    text: {
+      textShadow: "4px 4px 8px #FFFFFF",
+    },
   },
 }))
 const social = [
@@ -63,6 +66,7 @@ const Social = () => {
             key={channel.name}
             title={channel.tooltip}
             placement="right-start"
+            color="secondary"
           >
             <IconButton
               to={channel.href}
@@ -70,7 +74,6 @@ const Social = () => {
               rel="noopener noreferrer"
               className={classes.button}
               key={channel.name}
-              color="primary"
             >
               <channel.icon />
             </IconButton>

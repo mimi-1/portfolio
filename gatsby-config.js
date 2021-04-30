@@ -38,6 +38,18 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `StarDust Jazz Duo`,
+        short_name: `SDJD`,
+        start_url: `/`,
+        background_color: `#080402`,
+        theme_color: `#6633FD`,
+        display: `minimal-ui`,
+        icon: `src/images/SDJD.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
       resolve: `gatsby-theme-material-ui`,
       options: {
         webFontsConfig: {
@@ -73,19 +85,6 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src`,
-      },
-    },
-
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `StarDust Jazz Duo`,
-        short_name: `StarDust`,
-        start_url: `/`,
-        background_color: `#91509D`,
-        theme_color: `#DCEDC8`,
-        display: `standalone`,
-        icon: `src/images/music.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,

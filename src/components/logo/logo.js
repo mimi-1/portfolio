@@ -26,7 +26,7 @@ const Logo = () => {
   const classes = useStyles()
   return (
     <Button className={classes.logo} to="/">
-      StartDust Jazz Duo
+      SDJD
     </Button>
   )
 }
