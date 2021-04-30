@@ -1,7 +1,6 @@
 import React from "react"
 import Particles from "react-tsparticles"
 import { makeStyles } from "@material-ui/core/styles"
-import Star1Img from "../../images/star1.png"
 const useStyles = makeStyles(theme => ({
   particles: {
     position: "absolute",
@@ -32,9 +31,9 @@ const HeroParticles = () => {
       number: {
         density: {
           enable: true,
-          value_area: 200,
+          value_area: 800,
         },
-        value: 10,
+        value: 8,
       },
       value: 20,
       color: {
@@ -49,7 +48,7 @@ const HeroParticles = () => {
         character: {
           fill: true,
           font: "Verdana",
-          value: ["✦", "✧", "✶", "★"],
+          value: ["✦", "✧", "★"],
           // value: ["A", "B", "C"],
           style: "normal",
           weight: 800,
@@ -59,11 +58,11 @@ const HeroParticles = () => {
           {
             height: 100,
             replace_color: true,
-            src: { Star1Img },
+            src: "",
             width: 100,
           },
         ],
-        type: ["image", "character", "char"],
+        type: ["character", "char"],
       },
       size: {
         random: {
@@ -89,15 +88,15 @@ const HeroParticles = () => {
         random: true,
         animation: {
           enable: true,
-          speed: 3,
-          opacityMin: 0.2,
+          speed: 1,
+          opacityMin: 0,
           sync: false,
         },
       },
       life: {
         duration: {
           sync: false,
-          value: 5,
+          value: 2,
         },
         count: 10,
       },
@@ -141,14 +140,14 @@ const HeroParticles = () => {
     },
     emitters: [
       {
-        direction: "top-left",
+        direction: "none",
         // life: {
         //   count: 3,
         //   duration: 2,
         //   delay: 4,
         // },
         rate: {
-          delay: 1,
+          delay: 3,
           quantity: 2,
         },
         position: {

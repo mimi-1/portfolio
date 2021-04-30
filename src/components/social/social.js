@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     border: "0px",
-    color: theme.palette.primary.light,
+    color: theme.palette.primary,
   },
 }))
 const social = [

@@ -64,24 +64,6 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
-
-    // {
-    //   resolve: "gatsby-source-wordpress",
-    //   options: {
-    //     url: "https://wp.kaleigh.tech/graphql", //"http://www.gatsby.lotusms.tech/graphql", // baseUrl: "live-gatbsyjswp.pantheonsite.io",
-
-    //     type: {
-    //       Page: {
-    //         exclude: true,
-    //       },
-    //       User: {
-    //         exclude: true,
-    //       },
-    //       Theme: { exclude: true },
-    //       Settings: { exclude: true },
-    //     },
-    //   },
-    // },
     `gatsby-plugin-offline`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
