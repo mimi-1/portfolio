@@ -1,3 +1,5 @@
+//transition documntation
+//http:/reactcommunity.org/react-transition-group/transition
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 // import { useStaticQuery, graphql } from "gatsby"
@@ -10,6 +12,7 @@ import {
 import { Hidden, Fade, Zoom, Box } from "@material-ui/core/"
 import theme from "../theme"
 import HeroParticles from "./heroParticles"
+import { Transition } from "react-transition-group"
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
@@ -33,6 +36,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: "auto",
     minWidth: 300,
     width: "35%",
+    "&Top": {
+      width: "100%",
+    },
     [theme.breakpoints.down("md")]: {
       top: "20%",
       minWidth: 300,
@@ -92,6 +98,21 @@ const Hero = props => {
   //   ]
   // )
 
+  const duration = 1000
+
+  const defaultStyle = {
+    transition: `all ${duration}ms ease-in-out`,
+    opacity: 0,
+    transform: "scale(4)",
+  }
+
+  const transitionStyles = {
+    entering: { opacity: 1 },
+    entered: { opacity: 1, transform: "scale(1)" },
+    exiting: { opacity: 0, transform: "scale(1)" },
+    exited: { opacity: 0 },
+  }
+
   return (
     <>
       <Box position="relative" className={classes.heroContainer}>
@@ -133,6 +154,27 @@ const Hero = props => {
             />
           </Box>
         </Zoom>
+        <Transition appear={true} in={true} timeout={duration}>
+          {state => (
+            <Box
+              className={classes.heroText}
+              style={{
+                ...defaultStyle,
+                ...transitionStyles[state],
+              }}
+              position="absolute"
+              zIndex={1000}
+            >
+              <StaticImage
+                layout="constrained"
+                placeholder="none"
+                src="../../images/hero_logo_top.png"
+                alt="StartDust Jazz Duo"
+                transformOptions={{ fit: "cover" }}
+              />
+            </Box>
+          )}
+        </Transition>
         <HeroParticles />
       </Box>
     </>

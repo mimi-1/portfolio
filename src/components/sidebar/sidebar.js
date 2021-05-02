@@ -1,9 +1,9 @@
 import * as React from "react"
-import { AppBar, makeStyles } from "@material-ui/core"
+import { Hidden, AppBar, makeStyles } from "@material-ui/core"
 import Logo from "../logo/logo"
 import Social from "../social/social"
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
-import { grey, pink } from "@material-ui/core/colors"
+import { grey } from "@material-ui/core/colors"
 
 const useStyles = makeStyles({
   sidebar: {
@@ -38,8 +38,11 @@ const Sidebar = props => {
       elevation={0}
     >
       <Logo />
-      <Social />
+      <Hidden smDown>
+        <Social />
+      </Hidden>
     </AppBar>
+    //{" "}
     // </ThemeProvider>
   )
 }
