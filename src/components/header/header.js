@@ -7,8 +7,8 @@ import MenuIcon from "@material-ui/icons/Menu"
 import Drawer from "@material-ui/core/Drawer"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
-import { grey, pink } from "@material-ui/core/colors"
-
+import darkTheme from "../theme/darkTheme"
+import Social from "../social/social"
 import { useStaticQuery, graphql } from "gatsby"
 
 const stubMenu = [
@@ -142,6 +142,9 @@ const Header = props => {
             </Button>
           </ListItem>
         ))}
+        <ListItem>
+          <Social orientation="horizontal" />
+        </ListItem>
       </List>
     </Drawer>
   )

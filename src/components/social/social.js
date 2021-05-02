@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { IconButton } from "gatsby-theme-material-ui"
 import ButtonGroup from "@material-ui/core/ButtonGroup"
 import { makeStyles } from "@material-ui/core/styles"
@@ -18,8 +19,7 @@ const useStyles = makeStyles(theme => ({
   group: {
     margin: 0,
     marginBottom: "calc(100vh/3)",
-    // backgroundColor: theme.palette.primary.main,
-    backgroundColor: "black",
+    backgroundColor: theme.palette.black.main,
   },
   button: {
     border: "0px",
@@ -50,14 +50,14 @@ const social = [
   },
 ]
 
-const Social = () => {
+const Social = ({ orientation }) => {
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
       <ButtonGroup
         className={classes.group}
-        orientation="vertical"
+        orientation={orientation}
         aria-label="social media links group"
         variant="text"
       >
@@ -82,5 +82,10 @@ const Social = () => {
       </ButtonGroup>
     </div>
   )
+}
+
+//orientation vertical or horizontal
+Social.propTypes = {
+  orientation: PropTypes.string.isRequired,
 }
 export default Social

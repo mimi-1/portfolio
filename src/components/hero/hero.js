@@ -10,7 +10,7 @@ import {
   // withArtDirection,
 } from "gatsby-plugin-image"
 import { Hidden, Fade, Zoom, Box } from "@material-ui/core/"
-import theme from "../theme"
+import theme from "../theme/theme"
 import HeroParticles from "./heroParticles"
 import { Transition } from "react-transition-group"
 
@@ -98,19 +98,23 @@ const Hero = props => {
   //   ]
   // )
 
-  const duration = 1000
-
+  const duration = 2000
+  //transition: <property> <duration> <timing-function> <delay>;
   const defaultStyle = {
-    transition: `all ${duration}ms ease-in-out`,
-    opacity: 0,
-    transform: "scale(4)",
+    transition: `all ${duration}ms ease-in-out 0ms`,
+    opacity: 1,
+    transform: "scale(5)",
   }
 
+  // const transitionStyles = {
+  //   entering: { opacity: 1 },
+  //   entered: { opacity: 1, transform: "scale(1)" },
+  //   exiting: { opacity: 0, transform: "scale(1)" },
+  //   exited: { opacity: 0 },
+  // }
+
   const transitionStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1, transform: "scale(1)" },
-    exiting: { opacity: 0, transform: "scale(1)" },
-    exited: { opacity: 0 },
+    entered: { transform: "scale(1)" },
   }
 
   return (
@@ -143,7 +147,12 @@ const Hero = props => {
             />
           </Fade>
         </Hidden>
-        <Zoom in timeout={props.isAnimated ? 5000 : 0}>
+        <Zoom
+          in
+          timeout={
+            props.isAnimated ? { appear: 1000, enter: 5000, exit: 0 } : 0
+          }
+        >
           <Box className={classes.heroText} position="absolute" zIndex={1000}>
             <StaticImage
               layout="constrained"
@@ -154,7 +163,11 @@ const Hero = props => {
             />
           </Box>
         </Zoom>
-        <Transition appear={true} in={true} timeout={duration}>
+        <Transition
+          appear={true}
+          in={true}
+          timeout={{ appear: 1000, enter: 5000, exit: 0 }}
+        >
           {state => (
             <Box
               className={classes.heroText}

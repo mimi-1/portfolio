@@ -1,11 +1,11 @@
 import * as React from "react"
-import { Hidden, AppBar, makeStyles } from "@material-ui/core"
+import { Hidden, AppBar, Toolbar, makeStyles } from "@material-ui/core"
 import Logo from "../logo/logo"
 import Social from "../social/social"
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
-import { grey } from "@material-ui/core/colors"
+import { ThemeProvider, CssBaseline } from "@material-ui/core/styles"
+import darkTheme from "../theme/darkTheme"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   sidebar: {
     top: 0,
     left: 0,
@@ -14,36 +14,25 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "space-between",
     alignContent: "center",
+    backgroundColor: theme.palette.black.main,
   },
-})
+}))
 const Sidebar = props => {
-  const darkTheme = createMuiTheme({
-    palette: {
-      type: "dark",
-      primary: {
-        light: grey[200],
-        main: grey[500],
-        dark: grey[900],
-      },
-    },
-  })
   const classes = useStyles()
   return (
-    // <ThemeProvider theme={darkTheme}>
-    <AppBar
-      component="div"
-      color="transparent"
-      position="fixed"
-      className={classes.sidebar}
-      elevation={0}
-    >
-      <Logo />
-      <Hidden smDown>
-        <Social />
-      </Hidden>
-    </AppBar>
-    //{" "}
-    // </ThemeProvider>
+    <Hidden smDown>
+      <ThemeProvider theme={darkTheme}>
+        <AppBar
+          component="div"
+          position="fixed"
+          className={classes.sidebar}
+          elevation={0}
+        >
+          <Logo />
+          <Social orientation="vertical" />
+        </AppBar>
+      </ThemeProvider>
+    </Hidden>
   )
 }
 
