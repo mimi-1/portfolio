@@ -102,19 +102,15 @@ const Hero = props => {
   //transition: <property> <duration> <timing-function> <delay>;
   const defaultStyle = {
     transition: `all ${duration}ms ease-in-out 0ms`,
-    opacity: 1,
+    opacity: 0,
     transform: "scale(5)",
   }
 
-  // const transitionStyles = {
-  //   entering: { opacity: 1 },
-  //   entered: { opacity: 1, transform: "scale(1)" },
-  //   exiting: { opacity: 0, transform: "scale(1)" },
-  //   exited: { opacity: 0 },
-  // }
-
   const transitionStyles = {
-    entered: { transform: "scale(1)" },
+    entering: { opacity: 0.5 },
+    entered: { opacity: 1, transform: "scale(1)" },
+    exiting: { opacity: 1 },
+    exited: { opacity: 0 },
   }
 
   return (
