@@ -8,6 +8,12 @@ const useStyles = makeStyles(theme => ({
     //top left bottom right -> refactor to use spacing
     padding: "2em 2em 1em 6em",
     paddingLeft: theme.spacing(15),
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(10),
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: theme.spacing(5),
+    },
   },
 }))
 

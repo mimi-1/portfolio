@@ -27,7 +27,9 @@ const useStyles = makeStyles(theme => ({
     writingMode: "vertical-rl",
     textOrientation: "mixed",
     textDecoration: "none",
-    // textShadow: "1px 1px 2px #00ffff",
+    "&:hover": {
+      textShadow: "3px 3px 2px #6633FD",
+    },
   },
 }))
 

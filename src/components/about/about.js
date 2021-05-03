@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
 import { useStaticQuery, graphql } from "gatsby"
 import { getImage, withArtDirection } from "gatsby-plugin-image"
-
 import aboutdata from "../../data/about"
 import GatsbyMuiAvatar from "../avatar/avatar"
 import { makeStyles } from "@material-ui/core/styles"
@@ -20,7 +19,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const About = () => {
+const About = props => {
+  const isLengthLimit =
+    typeof props.length === "number" && props.length > 50 && props.length < 3000
+      ? true
+      : false
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -93,13 +96,13 @@ const About = () => {
               component="p"
               gutterBottom
             >
-              {person.text.substring(0, 200)}
+              {isLengthLimit ? person.text.substring(0, 200) : person.text}
             </Typography>
           </Grid>
         ))}
       </Grid>
 
-      <MoreLink>find more about us</MoreLink>
+      {props.isMoreLink && <MoreLink>find more about us</MoreLink>}
     </>
   )
 }

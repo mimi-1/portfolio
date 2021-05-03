@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const NotFoundPage = () => {
+const Test = () => {
   const classes = useStyles()
   const particles0 = {
     fullScreen: {
@@ -88,4 +88,4 @@ const NotFoundPage = () => {
     </Layout>
   )
 }
-export default NotFoundPage
+export default Test

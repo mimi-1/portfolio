@@ -37,7 +37,7 @@ const IndexPage = () => {
         <Container disableGutters maxWidth={false}>
           <Hero isAnimated={isAnimated} />
           <Section heading="About" isAnimated={isAnimated}>
-            <About />
+            <About length={200} isMoreLink={true} />
           </Section>
           <Section>
             <Subscribe />
