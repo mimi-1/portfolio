@@ -21,7 +21,6 @@ module.exports = {
         link: `/about`,
       },
       { name: `Gallery`, link: `/gallery` },
-      { name: `Happening`, link: `/happening` },
       {
         name: `Contact`,
         link: `/contact`,

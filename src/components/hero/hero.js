@@ -1,5 +1,8 @@
 //transition documntation
 //http:/reactcommunity.org/react-transition-group/transition
+//default transitions for material-ui
+//https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/styles/createTransitions.js
+
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 // import { useStaticQuery, graphql } from "gatsby"
@@ -98,10 +101,10 @@ const Hero = props => {
   //   ]
   // )
 
-  const duration = 2000
+  const duration = 3000
   //transition: <property> <duration> <timing-function> <delay>;
   const defaultStyle = {
-    transition: `all ${duration}ms ease-in-out 0ms`,
+    transition: `all ${duration}ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`,
     opacity: 0,
     transform: "scale(5)",
   }
@@ -145,9 +148,11 @@ const Hero = props => {
         </Hidden>
         <Zoom
           in
-          timeout={
-            props.isAnimated ? { appear: 1000, enter: 5000, exit: 0 } : 0
-          }
+          style={{
+            transitionDelay: "1000ms",
+            transitionTimingFunction: "steps(2, end)",
+          }}
+          timeout={props.isAnimated ? { appear: 0, enter: 4000, exit: 0 } : 0}
         >
           <Box className={classes.heroText} position="absolute" zIndex={1000}>
             <StaticImage
