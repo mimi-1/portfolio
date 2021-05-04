@@ -21,11 +21,7 @@ const Footer = () => {
   const classes = useStyles()
   const copyright = "Star Dust Jazz Duo"
   return (
-    <Box
-      component="footer"
-      className={classes.footer}
-      backgroundColor="primary"
-    >
+    <Box component="footer" className={classes.footer}>
       <Box padding={1}>
         <Box textAlign="center" marginTop={2}>
           <Typography variant="caption" color="secondary">

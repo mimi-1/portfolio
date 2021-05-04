@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#000000",
   },
   heroImage: {
+    display: "block",
     backgroundColor: "#000000",
     minHeight: theme.spacing(50),
     maxHeight: "calc(100vh - 3rem)",
@@ -35,13 +36,13 @@ const useStyles = makeStyles(theme => ({
     // left="40%"
     left: 0,
     right: 0,
+    // margin: "0 auto",
     marginLeft: "auto",
     marginRight: "auto",
     minWidth: 300,
-    width: "35%",
-    "&Top": {
-      width: "100%",
-    },
+    width: "30%",
+    // minHeight: "20%",
+    // maxHeight: "40%",
     [theme.breakpoints.down("md")]: {
       top: "20%",
       minWidth: 300,
@@ -158,6 +159,8 @@ const Hero = props => {
             <StaticImage
               layout="constrained"
               placeholder="none"
+              width={588}
+              height={419}
               src="../../images/hero_logo.png"
               alt="StartDust Jazz Duo"
               transformOptions={{ fit: "cover" }}
@@ -181,6 +184,8 @@ const Hero = props => {
             >
               <StaticImage
                 layout="constrained"
+                width={588}
+                height={419}
                 placeholder="none"
                 src="../../images/hero_logo_top.png"
                 alt="StartDust Jazz Duo"
