@@ -161,7 +161,7 @@ const Hero = props => {
               placeholder="none"
               width={588}
               height={419}
-              src="../../images/hero_logo.png"
+              src="../../images/hero_text.png"
               alt="StartDust Jazz Duo"
               transformOptions={{ fit: "cover" }}
             />
@@ -187,7 +187,7 @@ const Hero = props => {
                 width={588}
                 height={419}
                 placeholder="none"
-                src="../../images/hero_logo_top.png"
+                src="../../images/hero_text_top.png"
                 alt="StartDust Jazz Duo"
                 transformOptions={{ fit: "cover" }}
               />
