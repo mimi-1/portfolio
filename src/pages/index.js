@@ -6,7 +6,6 @@ import Container from "@material-ui/core/Container"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
 import Hero from "../components/hero/hero"
-import MUtest from "../components/MUtest/MUtest"
 import About from "../components/about/about"
 import Subscribe from "../components/subscribe/subscribe"
 import Section from "../components/layout/section"
@@ -44,9 +43,17 @@ const IndexPage = () => {
           </Section>
           <Section>
             <h1>Hi people</h1>
-            <h2>{isAnimated ? "isAnimated is true" : "IsAnimated is false"}</h2>
-            <p>The link to submit email doesnt work properly yet</p>
-            <p>Some pages dont work. Just check the animation and banner</p>
+            {/* <h2>{isAnimated ? "isAnimated is true" : "IsAnimated is false"}</h2> */}
+            <p>
+              I have created mailchimp account and contentful Content managment
+              system to keep content so that you can edit it yourself!
+            </p>
+            <p>
+              The link to submit email works, try to subscribe. There is no
+              feedback yet.
+            </p>
+            <p>About: Lets talk about it ...</p>
+
             <p>
               <Link to="/page-2/">Go to page 2</Link> <br />
             </p>

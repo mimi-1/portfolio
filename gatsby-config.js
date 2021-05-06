@@ -30,6 +30,15 @@ module.exports = {
 
   plugins: [
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        //values are in settings/apikey
+        spaceId: `0q1ftthbk8wn`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    {
       resolve: "gatsby-plugin-mailchimp",
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT, // string; add your MC list endpoint here; see instructions below
