@@ -159,8 +159,8 @@ const Hero = props => {
             <StaticImage
               layout="constrained"
               placeholder="none"
-              width={588}
-              height={419}
+              // width={588}
+              // height={419}
               src="../../images/hero_text.png"
               alt="StartDust Jazz Duo"
               transformOptions={{ fit: "cover" }}
@@ -184,8 +184,8 @@ const Hero = props => {
             >
               <StaticImage
                 layout="constrained"
-                width={588}
-                height={419}
+                // width={588}
+                // height={419}
                 placeholder="none"
                 src="../../images/hero_text_top.png"
                 alt="StartDust Jazz Duo"
