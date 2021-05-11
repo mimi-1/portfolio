@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
       // width: 100,
       // left: 0,
       // right: 0,
-      top: "35%",
+      top: "40%",
       width: "50%",
       marginLeft: "auto",
       marginRight: "auto",

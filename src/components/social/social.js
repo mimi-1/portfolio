@@ -44,7 +44,7 @@ const social = [
   {
     name: "Facebook",
     icon: FacebookIcon,
-    href: "#",
+    href: "https://www.facebook.com/TheBestJazzExperience",
     tooltip: "Follow us on Facebook",
   },
 ]
@@ -55,7 +55,7 @@ const Social = ({ orientation }) => {
   return (
     <div className={classes.root}>
       <ButtonGroup
-        className={orientation == "vertical" && classes.groupVertical}
+        className={orientation === "vertical" && classes.groupVertical}
         orientation={orientation}
         aria-label="social media links group"
         variant="text"

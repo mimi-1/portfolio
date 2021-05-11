@@ -5,20 +5,23 @@ import Particles from "react-tsparticles"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, Button } from "@material-ui/core"
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    color: theme.palette.primary.light,
-    backgroundColor: theme.palette.secondary.dark,
-  },
-  particles: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    // minHeight: "calc(100vh - 8rem)",
-    height: "100vh",
-  },
-}))
+const useStyles = makeStyles(theme => {
+  console.log(theme)
+  return {
+    container: {
+      color: theme.palette.primary.light,
+      backgroundColor: theme.palette.secondary.dark,
+    },
+    particles: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      // minHeight: "calc(100vh - 8rem)",
+      height: "100vh",
+    },
+  }
+})
 
 const NotFoundPage = () => {
   const classes = useStyles()

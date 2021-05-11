@@ -7,6 +7,23 @@ module.exports = {
     title: `StarDust Jazz Duo`,
     description: `Promotional website for a musical group Stardust Jazz Duo, blog about jazz and music, order music for your event`,
     author: `Maryna, Victor, Zhanna, Taras`,
+    social: [
+      {
+        name: "YouTube",
+        href: "https://www.youtube.com/channel/UCDi1qcqCETpfWFFNV4gXKYQ",
+        tooltip: "Follow us on YouTube",
+      },
+      {
+        name: "Instagram",
+        href: "#",
+        tooltip: "Follow us on Instagram",
+      },
+      {
+        name: "Facebook",
+        href: "https://www.facebook.com/TheBestJazzExperience",
+        tooltip: "Follow us on Facebook",
+      },
+    ],
     menuLinks: [
       {
         name: `Home`,
