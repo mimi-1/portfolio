@@ -1,16 +1,18 @@
 const palette = {
   primary: {
-    light: "#a164ff",
-    main: "#6633FD",
-    dark: "#0f00c8",
+    //shadow in logo and sidebar is defined explicitly
+    light: "#b480ff",
+    main: "#7C51FF",
+    dark: "#3f23cb",
   },
   secondary: {
     light: "#72ffff",
-    main: "#00ffff",
+    main: "#00FFFF",
     dark: "#00cbcc",
   },
   black: {
-    main: "#040509",
+    // main: "#040509",
+    main: "#000028",
   },
 }
 

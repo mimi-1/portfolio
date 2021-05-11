@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     textOrientation: "mixed",
     textDecoration: "none",
     "&:hover": {
-      textShadow: "3px 3px 2px #6633FD",
+      textShadow: "3px 3px 2px #b480ff",
     },
   },
 }))

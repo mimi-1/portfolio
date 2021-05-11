@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     display: "block",
     backgroundColor: "#000000",
     minHeight: theme.spacing(50),
-    maxHeight: "calc(100vh - 3rem)",
+    maxHeight: "calc(100vh)",
     [theme.breakpoints.down("xs")]: {
       top: "0",
       height: "100%",
@@ -159,8 +159,6 @@ const Hero = props => {
             <StaticImage
               layout="constrained"
               placeholder="none"
-              // width={588}
-              // height={419}
               src="../../images/hero_text.png"
               alt="StartDust Jazz Duo"
               transformOptions={{ fit: "cover" }}
@@ -184,8 +182,6 @@ const Hero = props => {
             >
               <StaticImage
                 layout="constrained"
-                // width={588}
-                // height={419}
                 placeholder="none"
                 src="../../images/hero_text_top.png"
                 alt="StartDust Jazz Duo"

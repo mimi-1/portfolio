@@ -2,7 +2,7 @@ import * as React from "react"
 import { Hidden, AppBar, Toolbar, makeStyles } from "@material-ui/core"
 import Logo from "../logo/logo"
 import Social from "../social/social"
-import { ThemeProvider, CssBaseline } from "@material-ui/core/styles"
+import { ThemeProvider } from "@material-ui/core/styles"
 import darkTheme from "../theme/darkTheme"
 
 const useStyles = makeStyles(theme => ({

@@ -16,10 +16,9 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
     },
   },
-  group: {
+  groupVertical: {
     margin: 0,
-    marginBottom: "calc(100vh/3)",
-    backgroundColor: theme.palette.black.main,
+    marginBottom: "calc(100vh/4)",
   },
   button: {
     border: "0px",
@@ -56,7 +55,7 @@ const Social = ({ orientation }) => {
   return (
     <div className={classes.root}>
       <ButtonGroup
-        className={classes.group}
+        className={orientation == "vertical" && classes.groupVertical}
         orientation={orientation}
         aria-label="social media links group"
         variant="text"

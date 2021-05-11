@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import { Button, IconButton } from "gatsby-theme-material-ui"
-import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import MenuIcon from "@material-ui/icons/Menu"
 import Drawer from "@material-ui/core/Drawer"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
-import darkTheme from "../theme/darkTheme"
 import Social from "../social/social"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -24,20 +23,34 @@ const stubMenu = [
 
 const useStyles = makeStyles(theme => ({
   grow: {
-    backgroundColor: "#000",
     flexGrow: 1,
+  },
+  appBar: {
+    backgroundColor: theme.palette.black.main,
+  },
+  toolbar: {
+    [theme.breakpoints.down("sm")]: {
+      alignItems: "stretch",
+      justifyContent: "center",
+      flexDirection: "column",
+      alignContent: "center",
+    },
   },
   menuButtonDesktop: {
     marginRight: theme.spacing(2),
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.main,
     "&:active": {
       color: theme.palette.secondary.light,
+    },
+    "&:hover": {
+      textShadow: "1px 0px 0px #00FFFF",
+      //textShadow: theme.palette.secondary.light,
     },
   },
   menuButtonDesktopActive: {
     borderBottomWidth: 3,
-    borderBottomStyle: "groove",
-    borderBottomColor: theme.palette.primary.light,
+    borderBottomStyle: "solid",
+    borderBottomColor: theme.palette.primary,
   },
   title: {
     display: "none",
@@ -53,27 +66,17 @@ const useStyles = makeStyles(theme => ({
   },
   sectionMobile: {
     display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
   mobileMenu: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
     paddingTop: theme.spacing(10),
   },
 }))
-
-// const appBarTheme = createMuiTheme({
-//   palette: {
-//     type: "dark",
-//     primary: {
-//       main: grey[900],
-//     },
-//     // secondary: {
-//     //   main: pink[500],
-//     // },
-//   },
-// })
 
 const Header = props => {
   const { site } = useStaticQuery(
@@ -132,7 +135,7 @@ const Header = props => {
         {menu.map(item => (
           <ListItem key={item.name} color="default">
             <Button
-              color="secondary"
+              className={classes.menuButtonDesktop}
               to={item.link}
               fullWidth
               disableElevation
@@ -152,8 +155,8 @@ const Header = props => {
   return (
     // <ThemeProvider theme={appBarTheme}>
     <div className={classes.grow}>
-      <AppBar color="transparent" position="sticky" elevation={0}>
-        <Toolbar color="default">
+      <AppBar className={classes.appBar} position="fixed" elevation={3}>
+        <Toolbar className={classes.toolbar}>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {menu.map(item => (
@@ -168,6 +171,7 @@ const Header = props => {
             ))}
           </div>
           <div className={classes.sectionMobile}>
+            <Social style={{ marginRight: "4rem" }} orientation="horizontal" />
             <IconButton
               color="secondary"
               aria-label="show more"

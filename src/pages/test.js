@@ -7,7 +7,7 @@ import { Box, Button } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary,
     backgroundColor: theme.palette.secondary.dark,
   },
   particles: {
