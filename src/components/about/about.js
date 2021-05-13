@@ -3,10 +3,10 @@ import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
 import { useStaticQuery, graphql } from "gatsby"
 import { getImage, withArtDirection } from "gatsby-plugin-image"
-// import aboutdata from "../../data/about"
 import GatsbyMuiAvatar from "../avatar/avatar"
 import { makeStyles } from "@material-ui/core/styles"
 import MoreLink from "../utils/morelink"
+import DOMPurify from "dompurify"
 
 const useStyles = makeStyles(theme => ({
   skipLink: {
@@ -32,7 +32,9 @@ const About = props => {
       ) {
         nodes {
           about {
-            about
+            childMarkdownRemark {
+              html
+            }
           }
           fullname
           name
@@ -67,7 +69,7 @@ const About = props => {
             fullname,
             avatar,
             digest: { digest },
-            about: { about },
+            about: about,
           } = person
 
           return (
@@ -96,12 +98,23 @@ const About = props => {
                 component="p"
                 gutterBottom
               >
-                {isLengthLimit ? digest : about}
+                {isLengthLimit ? (
+                  digest
+                ) : (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(
+                        about.childMarkdownRemark.html
+                      ),
+                    }}
+                  ></div>
+                )}
               </Typography>
             </Grid>
           )
         })}
       </Grid>
+
       {props.isMoreLink && <MoreLink>find more about us</MoreLink>}
     </>
   )

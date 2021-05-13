@@ -47,6 +47,17 @@ module.exports = {
 
   plugins: [
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        // Footnotes mode (default: true)
+        footnotes: true,
+        // GitHub Flavored Markdown mode (default: true)
+        gfm: true,
+        // Plugins configs
+        plugins: [],
+      },
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         //values are in settings/apikey
@@ -68,12 +79,13 @@ module.exports = {
         name: `StarDust Jazz Duo`,
         short_name: `SDJD`,
         start_url: `/`,
-        background_color: `#080402`,
-        theme_color: `#6633FD`,
+        background_color: `#000028`,
+        theme_color: `#7C51FF`,
         display: `fullscreen`,
         icon: `src/images/SDJD.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-theme-material-ui`,
       options: {
