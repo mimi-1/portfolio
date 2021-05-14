@@ -14,17 +14,18 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     width: theme.spacing(20),
     height: theme.spacing(20),
+    margin: "1em 1em 2em 1em",
   },
   [theme.breakpoints.down("md")]: {
     avatar: {
-      width: theme.spacing(10),
-      height: theme.spacing(10),
+      width: theme.spacing(15),
+      height: theme.spacing(15),
     },
   },
   [theme.breakpoints.down("sm")]: {
     avatar: {
-      width: theme.spacing(6),
-      height: theme.spacing(6),
+      width: theme.spacing(10),
+      height: theme.spacing(10),
     },
   },
 }))

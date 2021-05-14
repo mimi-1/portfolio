@@ -13,7 +13,6 @@ import {
   // withArtDirection,
 } from "gatsby-plugin-image"
 import { Hidden, Fade, Zoom, Box } from "@material-ui/core/"
-import theme from "../theme/theme"
 import HeroParticles from "./heroParticles"
 import { Transition } from "react-transition-group"
 
@@ -62,7 +61,7 @@ const useStyles = makeStyles(theme => ({
 
 const Hero = props => {
   const classes = useStyles()
-  const smallWidth = theme.breakpoints.values.md
+  // const smallWidth = theme.breakpoints.values.md
   // const smallHeight = smallWidth * 0.75
   // // getting images from graphql
   // const backgrounds = useStaticQuery(graphql`

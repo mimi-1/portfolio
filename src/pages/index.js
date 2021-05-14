@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Container from "@material-ui/core/Container"
 import Layout from "../components/layout/layout"
-import SEO from "../components/seo/seo"
+import Seo from "../components/seo/seo"
 import Hero from "../components/hero/hero"
 import About from "../components/about/about"
 import Subscribe from "../components/subscribe/subscribe"
@@ -31,7 +31,7 @@ const IndexPage = () => {
   // }, [])
   return (
     <>
-      <SEO title="Home" />
+      <Seo title="Home" />
       <Layout>
         <Container disableGutters maxWidth={false}>
           <Hero isAnimated={isAnimated} />

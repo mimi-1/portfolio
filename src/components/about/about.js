@@ -6,7 +6,7 @@ import { getImage, withArtDirection } from "gatsby-plugin-image"
 import GatsbyMuiAvatar from "../avatar/avatar"
 import { makeStyles } from "@material-ui/core/styles"
 import MoreLink from "../utils/morelink"
-import DOMPurify from "dompurify"
+// import DOMPurify from "dompurify"
 
 const useStyles = makeStyles(theme => ({
   skipLink: {
@@ -69,7 +69,7 @@ const About = props => {
             fullname,
             avatar,
             digest: { digest },
-            about: about,
+            about,
           } = person
 
           return (
@@ -103,9 +103,7 @@ const About = props => {
                 ) : (
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(
-                        about.childMarkdownRemark.html
-                      ),
+                      __html: about.childMarkdownRemark.html,
                     }}
                   ></div>
                 )}
