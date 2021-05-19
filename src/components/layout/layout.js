@@ -57,7 +57,7 @@ const Layout = props => {
           justify="space-between"
           alignItems="stretch"
         >
-          <Grid item>
+          <Grid item style={props.style}>
             <main className={classes.main}>{props.children}</main>
           </Grid>
           <Grid item>

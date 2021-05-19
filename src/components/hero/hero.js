@@ -18,11 +18,11 @@ import { Transition } from "react-transition-group"
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
-    backgroundColor: "#000000",
+    backgroundColor: theme.palette.black.main,
   },
   heroImage: {
     display: "block",
-    backgroundColor: "#000000",
+    backgroundColor: theme.palette.black.main,
     minHeight: theme.spacing(50),
     maxHeight: "calc(100vh)",
     [theme.breakpoints.down("xs")]: {

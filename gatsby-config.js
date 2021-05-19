@@ -118,6 +118,14 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-source-youtube-v3`,
+      options: {
+        channelId: process.env.YOUTUBE_CHANNEL,
+        apiKey: process.env.YOUTUBE_API_KEY,
+        maxVideos: 10, // Defaults to 50
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,

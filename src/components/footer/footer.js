@@ -6,13 +6,10 @@ const useStyles = makeStyles(theme => ({
   footer: {
     height: "5rem",
     color: theme.palette.secondary,
-    backgroundColor: theme.palette.grey[900],
-    // backgroundImage: `url(${image})`,
-    // backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.black.main,
     backgroundOrigin: "border-box",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    //border: "solid red 2px",
   },
 }))
 
