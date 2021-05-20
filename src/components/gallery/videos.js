@@ -70,9 +70,11 @@ const Videos = () => {
         }
       >
         {videos.map(video => {
+          const shortLength = video.description.indexOf("***")
+          const shortDescription = video.description.slice(0, shortLength)
           return (
             <GridListTile key={video.videoId} cols={1}>
-              <Video videoId={video.videoId} description={video.description} />
+              <Video videoId={video.videoId} description={shortDescription} />
             </GridListTile>
           )
         })}

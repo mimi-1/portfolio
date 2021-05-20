@@ -7,6 +7,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import YouTubeIcon from "@material-ui/icons/YouTube"
 import InstagramIcon from "@material-ui/icons/Instagram"
+// import TwitterIcon from "@material-ui/icons/Twitter"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
+
 const social = [
   {
     name: "YouTube",
@@ -38,7 +40,7 @@ const social = [
   {
     name: "Instagram",
     icon: InstagramIcon,
-    href: "#",
+    href: "https://www.instagram.com/stardustjazzduo/",
     tooltip: "Follow us on Instagram",
   },
   {
@@ -48,6 +50,12 @@ const social = [
     tooltip: "Follow us on Facebook",
   },
 ]
+
+// const icons = {
+//   YouTube: YouTubeIcon,
+//   Instagram: InstagramIcon,
+//   Facebook: FacebookIcon,
+// }
 
 const Social = ({ orientation }) => {
   const classes = useStyles()
@@ -60,24 +68,28 @@ const Social = ({ orientation }) => {
         aria-label="social media links group"
         variant="text"
       >
-        {social.map(channel => (
-          <Tooltip
-            key={channel.name}
-            title={channel.tooltip}
-            placement="right-start"
-            color="secondary"
-          >
-            <IconButton
-              to={channel.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.button}
+        {social.map(channel => {
+          // const icon = icons[channel.name]
+          // console.log("Icon: ", icon)
+          return (
+            <Tooltip
               key={channel.name}
+              title={channel.tooltip}
+              placement="right-start"
+              color="secondary"
             >
-              <channel.icon />
-            </IconButton>
-          </Tooltip>
-        ))}
+              <IconButton
+                to={channel.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.button}
+                key={channel.name}
+              >
+                <channel.icon />
+              </IconButton>
+            </Tooltip>
+          )
+        })}
       </ButtonGroup>
     </div>
   )

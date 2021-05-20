@@ -15,7 +15,7 @@ module.exports = {
       },
       {
         name: "Instagram",
-        href: "#",
+        href: "https://www.instagram.com/stardustjazzduo/",
         tooltip: "Follow us on Instagram",
       },
       {

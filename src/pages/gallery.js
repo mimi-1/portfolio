@@ -7,16 +7,10 @@ import palette from "../components/theme/palette"
 const Gallery = props => {
   return (
     <Layout>
-      <Section
-        style={{ background: palette.black.main }}
-        heading="Video gallery"
-      >
+      <Section style={{ background: palette.black.main }}>
         <Videos />
       </Section>
-      <Section
-        style={{ background: palette.black.main }}
-        heading="Instagram will go here - next stage"
-      >
+      <Section style={{ background: palette.black.main }}>
         <Videos />
       </Section>
     </Layout>
