@@ -3,55 +3,75 @@
 //default transitions for material-ui
 //https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/styles/createTransitions.js
 
+/*visibility
+Hide component
+              mobile|   tablet        | desktop
+            0        600      960     1280      1920
+innerWidth  |xs      sm       md       lg       xl
+            |--------|--------|--------|--------|-------->
+width       |   xs   |   sm   |   md   |   lg   |   xl
+
+smUp        |   show | hide
+mdUp        |            show | hide
+lgUp        |                     show | hide
+            |
+lgDown      |                              hide | show
+mdDown+     |                     hide | show                   - show on large and xlarge screens >1280px
+smDown      |             hide | show
+xsDown      |   hide | show
+*/
+
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-// import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import {
   StaticImage,
-  // GatsbyImage,
-  // getImage,
-  // withArtDirection,
+  GatsbyImage,
+  getImage,
+  withArtDirection,
 } from "gatsby-plugin-image"
-import { Hidden, Fade, Zoom, Box } from "@material-ui/core/"
+import { useMediaQuery, Hidden, Fade, Zoom, Box } from "@material-ui/core/"
 import HeroParticles from "./heroParticles"
 import { Transition } from "react-transition-group"
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
     backgroundColor: theme.palette.black.main,
+    height: "100vh",
   },
   heroImage: {
     display: "block",
     backgroundColor: theme.palette.black.main,
     minHeight: theme.spacing(50),
     maxHeight: "calc(100vh)",
+    height: "calc(100% - 20px)",
     [theme.breakpoints.down("xs")]: {
-      top: "0",
-      height: "100%",
+      top: "60px",
+      height: "calc(100% - 58px)",
     },
   },
   heroText: {
     top: "20%",
-    // left="40%"
     left: 0,
     right: 0,
     // margin: "0 auto",
     marginLeft: "auto",
     marginRight: "auto",
     minWidth: 300,
+    maxWidth: "80vw",
     width: "30%",
     // minHeight: "20%",
     // maxHeight: "40%",
     [theme.breakpoints.down("md")]: {
-      top: "20%",
+      top: "33%",
       minWidth: 300,
-      width: "50%",
+      width: "60%",
     },
     [theme.breakpoints.down("xs")]: {
       // width: 100,
       // left: 0,
       // right: 0,
-      top: "40%",
+      top: "30%",
       width: "50%",
       marginLeft: "auto",
       marginRight: "auto",
@@ -61,45 +81,42 @@ const useStyles = makeStyles(theme => ({
 
 const Hero = props => {
   const classes = useStyles()
-  // const smallWidth = theme.breakpoints.values.md
-  // const smallHeight = smallWidth * 0.75
-  // // getting images from graphql
-  // const backgrounds = useStaticQuery(graphql`
-  //   query {
-  //     mobile: file(name: { eq: "hero_mobile" }) {
-  //       relativePath
-  //       childImageSharp {
-  //         gatsbyImageData(
-  //           layout: FULL_WIDTH
-  //           aspectRatio: 1.05
-  //           backgroundColor: "#ffffff"
-  //           transformOptions: { fit: CONTAIN }
-  //         )
-  //       }
-  //     }
-  //     desktop: file(name: { eq: "hero_desktop" }) {
-  //       relativePath
-  //       childImageSharp {
-  //         gatsbyImageData(
-  //           layout: FULL_WIDTH
-  //           aspectRatio: 3.19
-  //           backgroundColor: "#ffffff"
-  //           transformOptions: { fit: CONTAIN }
-  //         )
-  //       }
-  //     }
-  //   }
-  // `)
 
-  // const images = withArtDirection(
-  //   getImage(backgrounds.desktop.childImageSharp),
-  //   [
-  //     {
-  //       media: "(max-width: 1024px)",
-  //       image: getImage(backgrounds.mobile.childImageSharp),
-  //     },
-  //   ]
-  // )
+  const backgrounds = useStaticQuery(graphql`
+    fragment getImage on File {
+      relativePath
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: DOMINANT_COLOR
+          backgroundColor: "#000028"
+          transformOptions: { fit: COVER }
+        )
+      }
+    }
+    query {
+      desktop: file(name: { eq: "hero_desktop" }) {
+        ...getImage
+      }
+      tablet: file(name: { eq: "hero_tablet" }) {
+        ...getImage
+      }
+      mobile: file(name: { eq: "hero_mobile" }) {
+        ...getImage
+      }
+    }
+  `)
+
+  const images = withArtDirection(getImage(backgrounds.desktop), [
+    {
+      media: "(max-width: 1280px)",
+      image: getImage(backgrounds.tablet),
+    },
+    {
+      media: "(max-width: 600px)",
+      image: getImage(backgrounds.mobile),
+    },
+  ])
 
   const duration = 3000
   //transition: <property> <duration> <timing-function> <delay>;
@@ -119,33 +136,15 @@ const Hero = props => {
   return (
     <>
       <Box position="relative" className={classes.heroContainer}>
-        <Hidden smDown>
-          <Fade in timeout={props.isAnimated ? 8000 : 0}>
-            <StaticImage
-              className={classes.heroImage}
-              objectPosition="center top"
-              src="../../images/hero_desktop.png"
-              alt="StartDust Jazz Duo hero image"
-              placeholder="dominantColor"
-              layout="fullWidth"
-              fit="cover"
-            />
-          </Fade>
-        </Hidden>
-        <Hidden mdUp>
-          <Fade in>
-            <StaticImage
-              className={classes.heroImage}
-              objectPosition="center top"
-              backgroundColor="#000"
-              src="../../images/hero_mobile.png"
-              alt="StartDust Jazz Duo hero mobile image"
-              placeholder="dominantColor"
-              layout="fullWidth"
-              fit="cover"
-            />
-          </Fade>
-        </Hidden>
+        <Fade in timeout={props.isAnimated ? 8000 : 0}>
+          <GatsbyImage
+            className={classes.heroImage}
+            alt="StartDust Jazz Duo hero image"
+            objectPosition="center top"
+            image={images}
+          />
+        </Fade>
+
         <Zoom
           in
           style={{
