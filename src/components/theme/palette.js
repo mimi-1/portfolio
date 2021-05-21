@@ -13,6 +13,11 @@ const palette = {
   black: {
     // main: "#040509",
     main: "#000028",
+    light: "#111139",
+  },
+  white: {
+    main: "#D7D7DC",
+    light: "#EDEDF3",
   },
 }
 

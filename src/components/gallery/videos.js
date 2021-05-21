@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   root: { color: theme.palette.primary.main },
   gridList: {
     flexWrap: "nowrap",
-    width: "80vw",
+    width: "90vw",
     // flexDirection: "row",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: "translateZ(0)",
@@ -25,7 +25,8 @@ const Videos = () => {
   const matchesSmDown = useMediaQuery(theme.breakpoints.down("sm"))
   const matchesXsDown = useMediaQuery(theme.breakpoints.down("xs"))
 
-  const cols = { lg: 3.2, md: 2.2, sm: 1.5, xs: 1 }
+  const cols = { lg: 3.2, md: 2.2, sm: 1.5, xs: 1.1 }
+  console.log("lg")
 
   const data = useStaticQuery(graphql`
     {
@@ -54,7 +55,7 @@ const Videos = () => {
   return (
     <div className={classes.root}>
       <Typography variant="h2" component="h2" gutterBottom>
-        StarDust Duo YouTube Videos
+        StarDust Jazz Duo YouTube Video Gallery
       </Typography>
       <GridList
         className={classes.gridList}
@@ -63,18 +64,19 @@ const Videos = () => {
           matchesMdDown
             ? matchesSmDown
               ? matchesXsDown
-                ? 1
+                ? 1.2
                 : 1.5
               : 2.2
             : 3.2
         }
       >
         {videos.map(video => {
-          const shortLength = video.description.indexOf("***")
-          const shortDescription = video.description.slice(0, shortLength)
+          const { description, videoId } = video
+          const shortLength = description.indexOf("***")
+          const shortDescription = description.slice(0, shortLength)
           return (
-            <GridListTile key={video.videoId} cols={1}>
-              <Video videoId={video.videoId} description={shortDescription} />
+            <GridListTile key={videoId} cols={1}>
+              <Video videoId={videoId} description={shortDescription} />
             </GridListTile>
           )
         })}

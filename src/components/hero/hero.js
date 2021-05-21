@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     // minHeight: "20%",
     // maxHeight: "40%",
     [theme.breakpoints.down("md")]: {
-      top: "33%",
+      top: "38%",
       minWidth: 300,
       width: "60%",
     },
@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
       // width: 100,
       // left: 0,
       // right: 0,
-      top: "30%",
+      top: "38%",
       width: "50%",
       marginLeft: "auto",
       marginRight: "auto",

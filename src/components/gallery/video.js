@@ -7,6 +7,7 @@ import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
 import Typography from "@material-ui/core/Typography"
+
 // import PlayArrowIcon from "@material-ui/icons/PlayArrow"
 // import { withStyles } from "@material-ui/core/styles"
 
@@ -19,15 +20,20 @@ import Typography from "@material-ui/core/Typography"
 const useStyles = makeStyles(theme => {
   return {
     root: {
-      // minWidth: "15em",
       margin: "2px",
-      background: theme.palette.black.light,
+      backgroundColor: theme.palette.white.light,
       height: 500,
+      [theme.breakpoints.down("sm")]: {
+        height: "60vh",
+      },
     },
     video: {
-      // width: 420,
-      width: "100%",
+      border: 0,
+      width: "calc(100% - 4px)",
       height: 360,
+      [theme.breakpoints.down("sm")]: {
+        height: "35vh",
+      },
     },
   }
 })
@@ -36,12 +42,17 @@ const Video = props => {
   const classes = useStyles()
   console.log(props.description)
   return (
-    <Card className={classes.root} raised={true}>
+    <Card
+      // style={{ backgroundColor: "#D7D7DC" }}
+      className={classes.root}
+      raised={true}
+    >
       <CardActionArea>
         <CardMedia className={classes.video}>
           <ReactPlayer
             url={`https://www.youtube.com/embed/${props.videoId}`}
             width="100%"
+            height="100%"
             // light={true}
             // playIcon={
             //   <PlayArrowIcon color="primary" style={{ fontSize: 50 }} />
@@ -57,7 +68,7 @@ const Video = props => {
                   widget_referrer: "www.stardustjazzduo.ca",
                 },
                 embedOptions: {
-                  frameborder: 1,
+                  frameborder: 0,
                 },
               },
             }}
