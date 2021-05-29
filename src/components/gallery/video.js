@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => {
 
 const Video = props => {
   const classes = useStyles()
-  console.log(props.description)
+  // console.log(props.description)
   return (
     <Card
       // style={{ backgroundColor: "#D7D7DC" }}

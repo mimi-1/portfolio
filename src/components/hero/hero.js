@@ -30,7 +30,7 @@ import {
   getImage,
   withArtDirection,
 } from "gatsby-plugin-image"
-import { useMediaQuery, Hidden, Fade, Zoom, Box } from "@material-ui/core/"
+import { Fade, Zoom, Box } from "@material-ui/core/"
 import HeroParticles from "./heroParticles"
 import { Transition } from "react-transition-group"
 

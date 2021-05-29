@@ -1,6 +1,8 @@
+const path = require("path")
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+console.log("Project directory:", __dirname)
 
 module.exports = {
   siteMetadata: {
@@ -67,6 +69,20 @@ module.exports = {
       },
     },
     {
+      resolve: "@fs/gatsby-plugin-drive",
+      options: {
+        folderId: process.env.GOOGLE_DRIVE_FOLDER_ID,
+        key: {
+          private_key: process.env.GOOGLE_PRIVATE_KEY,
+          client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        },
+        destination: path.join(__dirname, "src", "images", "gallery"),
+        exportGDocs: false,
+        // exportMimeType: "text/html",
+        // exportMiddleware: someFunction,
+      },
+    },
+    {
       resolve: "gatsby-plugin-mailchimp",
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT, // string; add your MC list endpoint here; see instructions below
@@ -114,9 +130,20 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-offline`,
+
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          breakpoints: [600, 960, 1280, 1920],
+          backgroundColor: `transparent`,
+        },
+      },
+    },
+
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-youtube-v3`,
       options: {
@@ -130,6 +157,13 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `gallery`,
+        path: `${__dirname}/src/images/gallery/`,
       },
     },
     `gatsby-plugin-gatsby-cloud`,

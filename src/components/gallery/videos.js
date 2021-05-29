@@ -7,10 +7,11 @@ import { useTheme } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 const useStyles = makeStyles(theme => ({
-  root: { color: theme.palette.primary.main },
+  root: { color: theme.palette.primary.main, overflow: "hidden" },
   gridList: {
     flexWrap: "nowrap",
-    width: "90vw",
+    width: "85vw",
+    // overflow: "hidden",
     // flexDirection: "row",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: "translateZ(0)",
@@ -26,7 +27,6 @@ const Videos = () => {
   const matchesXsDown = useMediaQuery(theme.breakpoints.down("xs"))
 
   const cols = { lg: 3.2, md: 2.2, sm: 1.5, xs: 1.1 }
-  console.log("lg")
 
   const data = useStaticQuery(graphql`
     {

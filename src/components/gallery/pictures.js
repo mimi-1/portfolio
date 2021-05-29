@@ -1,21 +1,43 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { GridList, GridListTile, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import Video from "./video"
-import { useTheme } from "@material-ui/core/styles"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
+import {
+  GridList,
+  GridListTile,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@material-ui/core"
+// import tileData from "./tileData"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
+import { useStaticQuery, graphql } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
-  root: { color: theme.palette.primary.main },
+  root: {
+    // backgroundColor: "red",
+    color: theme.palette.primary.main,
+    overflow: "hidden",
+  },
   gridList: {
-    flexWrap: "nowrap",
-    width: "80vw",
-    // flexDirection: "row",
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: "translateZ(0)",
+    width: "85vw",
+    height: "80vh",
+    margin: 0,
+    border: 0,
+    padding: 0,
+  },
+  gridListTile: {
+    backgroundColor: theme.palette.white.light,
+    margin: 0,
+    border: 0,
+    padding: 0,
+  },
+  image: {
+    height: "98%",
+    width: "98%",
+    margin: 4,
   },
 }))
+// https://material-ui.com/components/grid-list/
 
 const Pictures = () => {
   const classes = useStyles()
@@ -24,57 +46,65 @@ const Pictures = () => {
   const matchesMdDown = useMediaQuery(theme.breakpoints.down("md"))
   const matchesSmDown = useMediaQuery(theme.breakpoints.down("sm"))
   const matchesXsDown = useMediaQuery(theme.breakpoints.down("xs"))
-
-  const cols = { lg: 3.2, md: 2.2, sm: 1.5, xs: 1 }
-
-  const data = useStaticQuery(graphql`
+  const { allFile } = useStaticQuery(graphql`
     {
-      allYoutubeVideo(limit: 6, sort: { fields: publishedAt, order: DESC }) {
-        nodes {
-          channelId
-          title
-          channelTitle
-          videoId
-          description
-          thumbnail {
-            url
-          }
-          internal {
-            type
-            contentDigest
+      allFile(
+        filter: { relativeDirectory: { eq: "images/gallery" } }
+        limit: 10
+        sort: { fields: birthTime, order: DESC }
+      ) {
+        imageData: edges {
+          node {
+            id
+            birthTime
+            name
+            childImageSharp {
+              gatsbyImageData(
+                placeholder: TRACED_SVG
+                layout: CONSTRAINED
+                transformOptions: { fit: COVER }
+              )
+            }
           }
         }
-        totalCount
       }
     }
   `)
 
-  const videos = data.allYoutubeVideo.nodes
-
+  console.log("Images count:", allFile.imageData.length)
   return (
     <div className={classes.root}>
-      <Typography variant="h2" component="h2" gutterBottom>
-        StarDust Duo YouTube Videos
-      </Typography>
-      <GridList
-        className={classes.gridList}
-        cellHeight="auto"
-        cols={
-          matchesMdDown
-            ? matchesSmDown
-              ? matchesXsDown
-                ? 1
-                : 1.5
-              : 2.2
-            : 3.2
-        }
+      <Typography
+        color="primary"
+        variant="h2"
+        component="h2"
+        gutterBottom={true}
       >
-        {videos.map(video => {
-          const shortLength = video.description.indexOf("***")
-          const shortDescription = video.description.slice(0, shortLength)
+        StarDust Duo behind the scene
+      </Typography>
+
+      <GridList
+        cellHeight="auto"
+        className={classes.gridList}
+        cols={matchesMdDown ? (matchesSmDown ? (matchesXsDown ? 1 : 1) : 2) : 3}
+        spacing={4}
+      >
+        {allFile.imageData.map(entry => {
+          const { node } = entry
+          const cols = 2
+          const image = getImage(node)
           return (
-            <GridListTile key={video.videoId} cols={1}>
-              <Video videoId={video.videoId} description={shortDescription} />
+            <GridListTile
+              key={node.id}
+              cols={1}
+              rows={0.8}
+              className={classes.gridListTile}
+            >
+              <GatsbyImage
+                className={classes.image}
+                image={image}
+                alt={node.name}
+              />
             </GridListTile>
           )
         })}
