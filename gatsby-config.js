@@ -149,7 +149,7 @@ module.exports = {
       options: {
         channelId: process.env.YOUTUBE_CHANNEL,
         apiKey: process.env.YOUTUBE_API_KEY,
-        maxVideos: 10, // Defaults to 50
+        maxVideos: 20, // Defaults to 50
       },
     },
     {
