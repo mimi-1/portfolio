@@ -15,6 +15,11 @@ const useStyles = makeStyles(theme => ({
     // flexDirection: "row",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: "translateZ(0)",
+    [theme.breakpoints.down("md")]: {
+      width: "82vw",
+    },
+    [theme.breakpoints.down("sm")]: { width: "80vw" },
+    [theme.breakpoints.down("xs")]: { width: "80vw" },
   },
 }))
 

@@ -24,6 +24,11 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
     border: 0,
     padding: 0,
+    [theme.breakpoints.down("md")]: {
+      width: "82vw",
+    },
+    [theme.breakpoints.down("sm")]: { width: "80vw" },
+    [theme.breakpoints.down("xs")]: { width: "80vw" },
   },
   gridListTile: {
     backgroundColor: theme.palette.white.light,

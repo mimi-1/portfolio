@@ -8,7 +8,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import theme from "../theme/theme"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
-import "./layout.css"
+// import "./layout.css"
 import { Fab } from "gatsby-theme-material-ui"
 import UpIcon from "@material-ui/icons/KeyboardArrowUp"
 import { makeStyles } from "@material-ui/core/styles"
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   skipLink: {
     position: "fixed",
     bottom: theme.spacing(1),
-    right: theme.spacing(1),
+    right: theme.spacing(2),
   },
   main: {
     minHeight: "calc(100vh - 8rem)",
@@ -34,7 +34,7 @@ function ShowFabOnScroll(props) {
   return (
     <Grow in={trigger} timeout={800}>
       <Fab to="#" color="secondary" size="small" className={classes.skipLink}>
-        <UpIcon />
+        <UpIcon fontSize="small" />
       </Fab>
     </Grow>
   )
