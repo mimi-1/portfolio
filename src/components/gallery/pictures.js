@@ -55,7 +55,7 @@ const Pictures = () => {
     {
       allFile(
         filter: { relativeDirectory: { eq: "images/gallery" } }
-        limit: 10
+        limit: 18
         sort: { fields: birthTime, order: DESC }
       ) {
         imageData: edges {
