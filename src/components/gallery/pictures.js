@@ -34,12 +34,14 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.white.light,
     margin: 0,
     border: 0,
-    padding: 0,
+    padding: 2,
+    fontSize: 0,
+    verticalAlign: "bottom",
   },
   image: {
-    height: "98%",
-    width: "98%",
-    margin: 4,
+    height: "100%",
+    width: "100%",
+    objectPosition: "50% 50%",
   },
 }))
 // https://material-ui.com/components/grid-list/
@@ -61,13 +63,17 @@ const Pictures = () => {
         imageData: edges {
           node {
             id
-            birthTime
             name
             childImageSharp {
+              fluid {
+                aspectRatio
+              }
               gatsbyImageData(
                 placeholder: TRACED_SVG
                 layout: CONSTRAINED
-                transformOptions: { fit: COVER }
+                width: 400
+                aspectRatio: 0.8
+                transformOptions: { fit: COVER, cropFocus: CENTER }
               )
             }
           }
@@ -89,20 +95,24 @@ const Pictures = () => {
       </Typography>
 
       <GridList
-        cellHeight="auto"
+        cellHeight="auto" //children determin the height
         className={classes.gridList}
-        cols={matchesMdDown ? (matchesSmDown ? (matchesXsDown ? 1 : 1) : 2) : 3}
+        cols={matchesMdDown ? (matchesSmDown ? (matchesXsDown ? 1 : 1) : 2) : 4}
         spacing={4}
       >
         {allFile.imageData.map(entry => {
           const { node } = entry
-          const cols = 2
+
           const image = getImage(node)
+          const cols = Math.ceil(image.width / image.height)
+          console.log("Image data: ", image)
+          console.log("COLS:", image.width, "X", image.height)
+          console.log(node.childImageSharp.fluid.aspectRatio)
           return (
             <GridListTile
               key={node.id}
               cols={1}
-              rows={0.8}
+              rows={1}
               className={classes.gridListTile}
             >
               <GatsbyImage
@@ -110,6 +120,7 @@ const Pictures = () => {
                 image={image}
                 alt={node.name}
               />
+              //
             </GridListTile>
           )
         })}
