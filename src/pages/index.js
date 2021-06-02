@@ -41,23 +41,6 @@ const IndexPage = () => {
           <Section>
             <Subscribe />
           </Section>
-          <Section>
-            <h1>Hi people</h1>
-            {/* <h2>{isAnimated ? "isAnimated is true" : "IsAnimated is false"}</h2> */}
-            <p>
-              I have created mailchimp account and contentful Content managment
-              system to keep content so that you can edit it yourself!
-            </p>
-            <p>
-              The link to submit email works, try to subscribe. There is no
-              feedback yet.
-            </p>
-            <p>About: Lets talk about it ...</p>
-
-            <p>
-              <Link to="/page-2/">Go to page 2</Link> <br />
-            </p>
-          </Section>
         </Container>
       </Layout>
     </>

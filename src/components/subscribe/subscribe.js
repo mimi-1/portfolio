@@ -4,36 +4,48 @@
 
 import React, { useState, useEffect } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
-import TextField from "@material-ui/core/TextField"
-import Button from "@material-ui/core/Button"
-import { Typography } from "@material-ui/core"
+
+import { Typography, TextField, Button, Modal } from "@material-ui/core"
+import DialogComponent from "./dialogComponent"
 
 const Subscribe = () => {
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
-
+  const [openDialog, setOpenDialog] = React.useState(false)
   const [email, setEmail] = useState("")
-  const [listFields, setListFields] = useState({ FNAME: "", LNAME: "" })
-  const [result, setResult] = useState({})
+  const [listFields, setListFields] = useState({ FNAME: "" })
+  const [submissionState, setSubmissionState] = useState({
+    email: "",
+    fname: "",
+    result: "",
+  })
+  const handleOpenDialog = () => {
+    setOpenDialog(true)
+    console.log(openDialog)
+  }
 
+  const handleClose = () => {
+    setOpenDialog(false)
+  }
   const handleSubmit = e => {
     e.preventDefault()
     console.log("HANDLE SUBMIT FORM")
     addToMailchimp(email, listFields)
-      .then(data => {
+      .then(resp => {
         // I recommend setting data to React state
         // but you can do whatever you want (including ignoring this `then()` altogether)
-        setResult(data)
-        console.log(result)
+        setSubmissionState({
+          email: email,
+          fname: listFields.FNAME,
+          result: resp,
+        })
+        setOpenDialog(true)
+        if (resp.result == "success") {
+          setEmail("")
+          setListFields({ FNAME: "" })
+        }
       })
-      .catch(() => {
-        // unnecessary because Mailchimp only ever
+      .catch(err => {
+        // unnecessary because Mailchimp always
         // returns a 200 status code
-        // see below for how to handle errors
       })
 
     // const resp = await addToMailchimp(email)
@@ -56,45 +68,49 @@ const Subscribe = () => {
   }
 
   return (
-    <form onSubmit={event => handleSubmit(event)}>
-      <TextField
-        id="FNAME"
-        label="First Name"
-        type="text"
-        name="FNAME"
-        variant="outlined"
-        onChange={handleFieldsChange}
-        value={listFields.FNAME}
-        error={false}
-      />
+    <>
+      <form onSubmit={event => handleSubmit(event)}>
+        <TextField
+          id="FNAME"
+          label="Your Name"
+          type="text"
+          name="FNAME"
+          variant="outlined"
+          onChange={handleFieldsChange}
+          value={listFields.FNAME}
+          error={false}
+        />
 
-      <TextField
-        id="LNAME"
-        label="Last Name"
-        type="text"
-        name="LNAME"
-        variant="outlined"
-        value={listFields.LNAME}
-        onChange={e => handleFieldsChange(e)}
-      />
+        <TextField
+          id="outlined-email-input"
+          required
+          label="Email"
+          type="email"
+          name="email"
+          autoComplete="email"
+          variant="outlined"
+          onChange={handleEmailChange}
+          // helperText="Email is required field"
+          value={email}
+        />
 
-      <TextField
-        id="outlined-email-input"
-        required
-        label="Email"
-        type="email"
-        name="email"
-        autoComplete="email"
-        variant="outlined"
-        onChange={handleEmailChange}
-        // helperText="Email is required field"
-        value={email}
-      />
+        <Button
+          variant="contained"
+          color="primary"
+          label="Submit"
+          type="submit"
+        >
+          <Typography variant="button">Subscribe</Typography>
+        </Button>
+      </form>
 
-      <Button variant="contained" color="primary" label="Submit" type="submit">
-        <Typography variant="button">Subscribe</Typography>
-      </Button>
-    </form>
+      <DialogComponent
+        title={submissionState.result.result}
+        message={submissionState.result.msg}
+        open={openDialog}
+        handleClose={handleClose}
+      />
+    </>
   )
 }
 

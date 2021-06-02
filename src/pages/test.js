@@ -1,91 +1,51 @@
 import React from "react"
-import Layout from "../components/layout/layout"
-import Section from "../components/layout/section"
-import Particles from "react-tsparticles"
-import { makeStyles } from "@material-ui/core/styles"
-import { Box, Button } from "@material-ui/core"
+import Button from "@material-ui/core/Button"
+import Dialog from "@material-ui/core/Dialog"
+import DialogActions from "@material-ui/core/DialogActions"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogTitle from "@material-ui/core/DialogTitle"
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    color: theme.palette.primary,
-    backgroundColor: theme.palette.secondary.dark,
-  },
-  particles: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    // minHeight: "calc(100vh - 8rem)",
-    height: "100vh",
-  },
-}))
+export default function AlertDialog() {
+  const [open, setOpen] = React.useState(false)
 
-const Test = () => {
-  const classes = useStyles()
-  const particles0 = {
-    fullScreen: {
-      enable: true,
-    },
-    fpsLimit: 60,
-    background: {
-      color: {
-        value: "#000000",
-      },
-      size: "cover",
-      opacity: 0,
-      position: "50% 50%",
-    },
-    particles: {
-      number: {
-        density: {
-          enable: true,
-          value_area: 800,
-        },
-        value: 8,
-      },
-      value: 20,
-      color: {
-        value: ["#FFFFFF", "FFFBE6", "#E6EAFF", "#FFE6FB", "#FFE6FF"],
-        animation: {
-          enable: true,
-          speed: 20,
-          sync: false,
-        },
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        random: {
-          enable: true,
-          minimumValue: 10,
-        },
-        value: {
-          min: 10,
-          max: 30,
-        },
-      },
-    },
-    detectRetina: true,
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
   }
 
   return (
-    <Layout>
-      <Box classes={{ root: classes.container }} p={1}>
-        <Section>
-          <h1>404: Not Found</h1>
-          <p>You just hit a route that doesn&#39;t exist... It is cold here.</p>
-          <Button color="primary">Go home</Button>
-          <Button color="secondary">Secondary color</Button>
-        </Section>
-        <Particles
-          id="tsparticles"
-          options={particles0}
-          width={"100%"}
-          height={"100%"}
-        />
-      </Box>
-    </Layout>
+    <div>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Open alert dialog
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Disagree
+          </Button>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   )
 }
-export default Test
