@@ -57,7 +57,7 @@ const Pictures = () => {
   // the query weardly switched length and height for vertically oriented images if ratio
   // (or width height is not given as an argument, )
   //  to build masonry gallery I will need original aspectRatio which so far I wasnt able to get
-  // for future try to check how iages of different sazes are returned with unsplash
+  // for future try to check how imgatsby developages of different sazes are returned with unsplash
 
   const { allFile } = useStaticQuery(graphql`
     {

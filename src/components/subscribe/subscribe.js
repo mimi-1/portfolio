@@ -2,21 +2,53 @@
 //https://mailchimp.com/developer/marketing/guides/create-your-first-audience/
 //https://www.gatsbyjs.com/docs/building-a-contact-form/
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
-
-import { Typography, TextField, Button, Modal } from "@material-ui/core"
+import { StaticImage } from "gatsby-plugin-image"
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  makeStyles,
+  Link,
+  IconButton,
+} from "@material-ui/core"
 import DialogComponent from "./dialogComponent"
 
+const useStyles = makeStyles(theme => ({
+  form: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  input: {
+    backgroundColor: theme.palette.white.light,
+    width: "25ch",
+  },
+  heading: {
+    color: theme.palette.primary.dark,
+  },
+  privacy: {
+    color: theme.palette.primary.dark,
+  },
+  button: {
+    color: theme.palette.secondary.main,
+  },
+}))
+
 const Subscribe = () => {
+  const classes = useStyles()
   const [openDialog, setOpenDialog] = React.useState(false)
   const [email, setEmail] = useState("")
+  const [emailError, setEmailError] = useState({ state: false, text: "" })
   const [listFields, setListFields] = useState({ FNAME: "" })
   const [submissionState, setSubmissionState] = useState({
     email: "",
     fname: "",
     result: "",
   })
+
   const handleOpenDialog = () => {
     setOpenDialog(true)
     console.log(openDialog)
@@ -30,8 +62,6 @@ const Subscribe = () => {
     console.log("HANDLE SUBMIT FORM")
     addToMailchimp(email, listFields)
       .then(resp => {
-        // I recommend setting data to React state
-        // but you can do whatever you want (including ignoring this `then()` altogether)
         setSubmissionState({
           email: email,
           fname: listFields.FNAME,
@@ -68,9 +98,29 @@ const Subscribe = () => {
   }
 
   return (
-    <>
-      <form onSubmit={event => handleSubmit(event)}>
+    <Container maxWidth="sm">
+      <Typography
+        className={classes.heading}
+        variant="h3"
+        component="h3"
+        align="center"
+        gutterBottom={true}
+      >
+        Join StarDust Jazz Duo newsletter!
+      </Typography>
+      <Typography
+        variant="body2"
+        align="center"
+        paragraph={true}
+        display="block"
+      >
+        If you don't like it, there is an unsubscribe link at the bottom of
+        every email we send. No spam garanteed!
+      </Typography>
+      <form className={classes.form} onSubmit={event => handleSubmit(event)}>
         <TextField
+          size="small"
+          className={classes.input}
           id="FNAME"
           label="Your Name"
           type="text"
@@ -82,7 +132,9 @@ const Subscribe = () => {
         />
 
         <TextField
-          id="outlined-email-input"
+          size="small"
+          classes={{ root: classes.input }}
+          error={emailError.state}
           required
           label="Email"
           type="email"
@@ -90,11 +142,11 @@ const Subscribe = () => {
           autoComplete="email"
           variant="outlined"
           onChange={handleEmailChange}
-          // helperText="Email is required field"
           value={email}
+          // helperText={emailError.text}
         />
-
         <Button
+          className={classes.button}
           variant="contained"
           color="primary"
           label="Submit"
@@ -103,14 +155,55 @@ const Subscribe = () => {
           <Typography variant="button">Subscribe</Typography>
         </Button>
       </form>
+      <Typography
+        className={classes.privacy}
+        variant="caption"
+        component="p"
+        paragraph={true}
+        display="block"
+        color="primary"
+      >
+        We respect your privacy. We promise never to share, trade, sell,
+        deliver, reveal, publicize, or market your email address in any way,
+        shape, or form.
+      </Typography>
 
+      <Typography
+        variant="caption"
+        component="p"
+        paragraph={true}
+        display="block"
+      >
+        Our subscription campaign is powered by
+        <IconButton
+          size="small"
+          href="https://mailchimp.com/legal/privacy/#3._Privacy_for_Contacts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <StaticImage
+            src="../../images/mailchimp.png"
+            alt="Mailchimp Link"
+            width={100}
+          />
+        </IconButton>
+        {". You can read thier privacy policy "}
+        <Link
+          href={"https://mailchimp.com/legal/privacy/#3._Privacy_for_Contacts"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          here
+        </Link>
+        .
+      </Typography>
       <DialogComponent
         title={submissionState.result.result}
         message={submissionState.result.msg}
         open={openDialog}
         handleClose={handleClose}
       />
-    </>
+    </Container>
   )
 }
 

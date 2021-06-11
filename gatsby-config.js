@@ -7,7 +7,7 @@ console.log("Project directory:", __dirname)
 module.exports = {
   siteMetadata: {
     title: `StarDust Jazz Duo`,
-    description: `Promotional website for a musical group Stardust Jazz Duo, blog about jazz and music, order music for your event`,
+    description: `Stardust Jazz Duo official website, jazz music, music services`,
     author: `Maryna, Victor, Zhanna, Taras`,
     social: [
       {
@@ -26,6 +26,10 @@ module.exports = {
         tooltip: "Follow us on Facebook",
       },
     ],
+    contact: {
+      phone: "(647) 472-1727",
+      email: "stardustjazzduo3@gmail.com",
+    },
     menuLinks: [
       {
         name: `Home`,

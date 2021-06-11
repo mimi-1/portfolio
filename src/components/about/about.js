@@ -36,6 +36,7 @@ const About = props => {
               html
             }
           }
+          role
           fullname
           name
           digest {
@@ -70,17 +71,21 @@ const About = props => {
             avatar,
             digest: { digest },
             about,
+            role,
           } = person
 
           return (
             <Grid item key={name} xs={12} lg={6}>
               <Typography
                 variant="h3"
-                className="mobile-header"
+                // className="mobile-header"
                 component="h3"
                 gutterBottom
               >
                 {fullname}
+              </Typography>
+              <Typography variant="subtitle1" gutterBottom>
+                {role}
               </Typography>
 
               <GatsbyMuiAvatar
