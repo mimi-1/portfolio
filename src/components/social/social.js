@@ -63,7 +63,9 @@ const Social = ({ orientation }) => {
   return (
     <div className={classes.root}>
       <ButtonGroup
-        className={orientation === "vertical" && classes.groupVertical}
+        className={
+          orientation === "vertical" ? classes.groupVertical : undefined
+        }
         orientation={orientation}
         aria-label="social media links group"
         variant="text"
