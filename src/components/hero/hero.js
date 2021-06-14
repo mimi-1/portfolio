@@ -36,12 +36,14 @@ import { Transition } from "react-transition-group"
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
+    overflow: "hidden",
     backgroundColor: theme.palette.black.main,
     height: "100vh",
   },
   heroImage: {
     display: "block",
     backgroundColor: theme.palette.black.main,
+    maxWidth: "100vw",
     minHeight: theme.spacing(50),
     maxHeight: "calc(100vh)",
     height: "calc(100% - 20px)",
@@ -60,8 +62,7 @@ const useStyles = makeStyles(theme => ({
     minWidth: 300,
     maxWidth: "80vw",
     width: "30%",
-    // minHeight: "20%",
-    // maxHeight: "40%",
+    overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       top: "38%",
       minWidth: 300,
@@ -69,12 +70,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       // width: 100,
-      // left: 0,
-      // right: 0,
+      overflow: "hidden",
       top: "38%",
-      width: "50%",
-      marginLeft: "auto",
-      marginRight: "auto",
     },
   },
 }))
@@ -159,7 +156,7 @@ const Hero = props => {
               placeholder="none"
               src="../../images/hero_text.png"
               alt="StartDust Jazz Duo"
-              transformOptions={{ fit: "cover" }}
+              transformOptions={{ fit: "inside" }}
             />
           </Box>
         </Zoom>
@@ -183,7 +180,7 @@ const Hero = props => {
                 placeholder="none"
                 src="../../images/hero_text_top.png"
                 alt="StartDust Jazz Duo"
-                transformOptions={{ fit: "cover" }}
+                transformOptions={{ fit: "inside" }}
               />
             </Box>
           )}
