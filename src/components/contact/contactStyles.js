@@ -4,8 +4,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     margin: theme.spacing(2),
     padding: theme.spacing(2),
-    width: 600,
-    height: 800,
+    // width: "auto",
+    // height: 500,
     backgroundColor: theme.palette.white.light,
   },
   form: {

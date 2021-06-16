@@ -8,23 +8,27 @@ import ContactEmail from "../components/contact/contactEmail"
 
 const ContactPage = () => {
   const text = "We'd love to hear from you."
-  
+
   return (
     <Layout>
       <Seo title="Contact StarDust Jazz Duo" />
       <Section>
-        <Box marginTop={3} marginBottom={3}>
-          <Typography variant="h1">Contact us</Typography>
-          <Typography variant="subtitle1" component="p">
-            {text}
-          </Typography>
-        </Box>
-        <Grid container>
-          <Grid item>
-            <ContactForm />
+        <Box style={{ minHeight: "76.5vh" }}>
+          <Box marginTop={3} marginBottom={3}>
+            <Typography variant="h1">Contact us</Typography>
+            <Typography variant="subtitle1" component="p">
+              {text}
+            </Typography>
+          </Box>
+          <Grid container>
+            <Grid item>
+              <ContactForm />
+            </Grid>
+            <Grid item>
+              <ContactEmail />
+            </Grid>
           </Grid>
-          <Grid item><ContactEmail/></Grid>
-        </Grid>
+        </Box>
       </Section>
     </Layout>
   )
