@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     right: theme.spacing(2),
   },
   main: {
-    minHeight: "calc(100vh - 8rem)",
+    minHeight: "calc(100vh - 5rem)",
   },
 }))
 
@@ -41,6 +41,7 @@ function ShowFabOnScroll(props) {
 }
 
 const Layout = props => {
+  //threshold for button to return back to the top of the screen
   const smallMedia = useMediaQuery(theme => theme.breakpoints.down("sm"))
   const threshold = smallMedia ? 150 : 500
   const classes = useStyles()

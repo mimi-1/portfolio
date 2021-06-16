@@ -18,6 +18,7 @@ const palette = {
   white: {
     main: "#D7D7DC",
     light: "#EDEDF3",
+    dark: "#c1c1dd",
   },
 }
 

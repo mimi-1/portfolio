@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     display: "block",
     overflow: "visible",
     width: "100%",
-    height: 90,
+    height: 180,
     color: theme.palette.secondary.light,
     backgroundColor: theme.palette.black.main,
     "& *": {
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     bottom: 20,
     overflow: "hidden",
     pointerEvents: "none",
-    width: "100%",
+    // width: "100%",
     maxWidth: "100%",
     minWidth: "50%",
     zIndex: 0,
@@ -34,20 +34,22 @@ const useStyles = makeStyles(theme => ({
       width: "100vw",
     },
     [theme.breakpoints.up("md")]: {
-      marginLeft: "3rem",
+      paddingLeft: "3.2rem",
     },
   },
   text: {
     display: "block",
     position: "absolute",
-    bottom: 0,
-    right: 0,
-    left: 0,
+    right: 5,
+    top: 0,
+    // bottom: 0,
+    // right: 0,
+    // left: 0,
     zIndex: 20,
     [theme.breakpoints.up("sm")]: {
       right: 2,
       top: 0,
-      left: "70%",
+      // left: "70%",
     },
   },
 }))
@@ -55,6 +57,7 @@ const useStyles = makeStyles(theme => ({
 const Footer = () => {
   const classes = useStyles()
   const copyright = "Star Dust Jazz Duo"
+  const place = "Toronto, ON"
   return (
     <Box component="footer" className={classes.footer} position="relative">
       <Box
@@ -66,6 +69,8 @@ const Footer = () => {
       >
         <Typography variant="caption" color="secondary">
           &copy; {new Date().getFullYear()} {copyright}
+          {", "}
+          {place}
         </Typography>
       </Box>
       <Box position="absolute" className={classes.image}>
