@@ -18,10 +18,10 @@ const ContactEmail = () => {
       </Typography>
       <Button
         startIcon={<MailOutlineIcon />}
-        style={{ textTransform: "none", margin: 20 }}
+        style={{ textTransform: "none", margin: 2 }}
         href={`mailto:${email}`}
       >
-        {email}
+        <Typography display="block">{email}</Typography>
       </Button>
       <Typography variant="h3" component="h3" color="primary">
         Connect with us on our social media:

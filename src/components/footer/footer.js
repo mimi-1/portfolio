@@ -15,9 +15,6 @@ const useStyles = makeStyles(theme => ({
     "& *": {
       color: theme.palette.secondary,
     },
-    // [theme.breakpoints.up("sm")]: {
-    //   height: "8rem",
-    // },
   },
   image: {
     position: "absolute",
