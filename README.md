@@ -1,6 +1,7 @@
 <h1 align="center">
-  A website built with gatsby/react/MU
+  A website repo built with gatsby/react/MU
 </h1>
+Website deployed at (https://stardustjazzduo.netlify.app/)
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
@@ -41,10 +42,3 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
 12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
-
