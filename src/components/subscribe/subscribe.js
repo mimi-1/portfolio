@@ -187,7 +187,7 @@ const Subscribe = () => {
             width={100}
           />
         </IconButton>
-        {". You can read thier privacy policy "}
+        {". You can read their privacy policy "}
         <Link
           href={"https://mailchimp.com/legal/privacy/#3._Privacy_for_Contacts"}
           target="_blank"

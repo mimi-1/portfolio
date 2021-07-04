@@ -52,6 +52,12 @@ const useStyles = makeStyles(theme => ({
       // left: "70%",
     },
   },
+  copy: {
+    textAlign: "left",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "right",
+    },
+  },
 }))
 
 const Footer = () => {
@@ -67,10 +73,18 @@ const Footer = () => {
         padding={2}
         textAlign="center"
       >
-        <Typography variant="caption" color="secondary">
-          &copy; {new Date().getFullYear()} {copyright}
-          {", "}
-          {place}
+        <Typography
+          className={classes.copy}
+          variant="caption"
+          color="secondary"
+        >
+          <pre>
+            {copyright}
+            {"\n"}
+            {place}
+            {"\n"}
+            &copy; {new Date().getFullYear()}
+          </pre>
         </Typography>
       </Box>
       <Box position="absolute" className={classes.image}>
