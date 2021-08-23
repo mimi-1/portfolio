@@ -1,5 +1,5 @@
 import React from "react"
-import useState from "react"
+import { useState } from "react"
 
 import {
   TextField,
@@ -42,6 +42,7 @@ const ContactForm = () => {
         name="contact"
         method="POST"
         data-netlify="true"
+        data-netlify-honeypot="bot-field"
       >
         <Grid container spacing={2} direction="column">
           <Grid item>
